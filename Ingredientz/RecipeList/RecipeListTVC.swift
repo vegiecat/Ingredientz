@@ -16,13 +16,14 @@ class RecipeListTVC: UITableViewController {
     
     var isInEditMode = false
 
+    //MARK: - USER INTERACTION
     @IBAction func didTapAddBtn(sender : UIBarButtonItem) {
         rowCount++
         
         //index path to add
         let newRow = NSIndexPath(forRow: 0, inSection: 0)
         
-        self.tableView.insertRowsAtIndexPaths([newRow], withRowAnimation: UITableViewRowAnimation.Automatic)
+        self.tableView.insertRowsAtIndexPaths([newRow], withRowAnimation: .Automatic)
     }
 
     
@@ -32,6 +33,7 @@ class RecipeListTVC: UITableViewController {
     }
     
     
+    // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -46,11 +48,13 @@ class RecipeListTVC: UITableViewController {
 
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1;
+        return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return rowCount;
+        
+        //TODO: update this
+        return rowCount
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -83,15 +87,11 @@ class RecipeListTVC: UITableViewController {
         return true
     }
 
-    /*
     // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         // Get the new view controller using [segue destinationViewController].
         // Pass the selected object to the new view controller.
     }
-    */
     
     
     // MARK: 
