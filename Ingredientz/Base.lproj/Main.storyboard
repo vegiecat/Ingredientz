@@ -37,7 +37,11 @@
                         </connections>
                     </tableView>
                     <toolbarItems>
-                        <barButtonItem systemItem="add" id="6hR-Ze-KG5"/>
+                        <barButtonItem systemItem="add" id="6hR-Ze-KG5">
+                            <connections>
+                                <action selector="didTapAddBtn:" destination="b12-I3-2k7" id="hmn-9L-BhB"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="WZZ-BH-0Ey"/>
                         <barButtonItem systemItem="edit" id="Lxm-yI-TnP">
                             <connections>

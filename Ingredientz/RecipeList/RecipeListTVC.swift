@@ -10,12 +10,27 @@ import UIKit
 
 class RecipeListTVC: UITableViewController {
     
+    //REMOVE THIS LINE ; for prototype purposes
+    var rowCount = 3
+    
+    
     var isInEditMode = false
 
+    @IBAction func didTapAddBtn(sender : UIBarButtonItem) {
+        rowCount++
+        
+        //index path to add
+        let newRow = NSIndexPath(forRow: 0, inSection: 0)
+        
+        self.tableView.insertRowsAtIndexPaths([newRow], withRowAnimation: UITableViewRowAnimation.Automatic)
+    }
+
+    
     @IBAction func didTapEditBtn(sender: UIBarButtonItem) {
         isInEditMode = !isInEditMode
         self.tableView.setEditing(isInEditMode, animated: true)
     }
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +50,7 @@ class RecipeListTVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 3;
+        return rowCount;
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
