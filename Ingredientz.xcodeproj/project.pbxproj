@@ -14,6 +14,7 @@
 		686FF0401B0446F200C19B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686FF03E1B0446F200C19B95 /* LaunchScreen.xib */; };
 		686FF04C1B0446F200C19B95 /* IngredientzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF04B1B0446F200C19B95 /* IngredientzTests.swift */; };
 		D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */; };
+		D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		686FF04A1B0446F200C19B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686FF04B1B0446F200C19B95 /* IngredientzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientzTests.swift; sourceTree = "<group>"; };
 		D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
+		D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeListTVC.swift; path = RecipeList/RecipeListTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		686FF02F1B0446F200C19B95 /* Ingredientz */ = {
 			isa = PBXGroup;
 			children = (
+				D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */,
 				686FF0321B0446F200C19B95 /* AppDelegate.swift */,
 				686FF0391B0446F200C19B95 /* Main.storyboard */,
 				686FF03C1B0446F200C19B95 /* Images.xcassets */,
@@ -216,6 +219,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */,
 				686FF0331B0446F200C19B95 /* AppDelegate.swift in Sources */,
 				686FF0361B0446F200C19B95 /* Ingredientz.xcdatamodeld in Sources */,
 			);
