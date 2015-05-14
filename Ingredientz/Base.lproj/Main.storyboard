@@ -4,7 +4,7 @@
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
     </dependencies>
     <scenes>
-        <!--Recipe ListTVC-->
+        <!--Recipes-->
         <scene sceneID="dpm-iV-fff">
             <objects>
                 <tableViewController id="b12-I3-2k7" customClass="RecipeListTVC" customModule="Ingredientz" customModuleProvider="target" sceneMemberID="viewController">
@@ -33,7 +33,16 @@
                             <outlet property="delegate" destination="b12-I3-2k7" id="0De-Bo-0op"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="6dA-3T-NKR"/>
+                    <toolbarItems>
+                        <barButtonItem systemItem="add" id="6hR-Ze-KG5"/>
+                        <barButtonItem style="plain" systemItem="flexibleSpace" id="WZZ-BH-0Ey"/>
+                        <barButtonItem systemItem="edit" id="Lxm-yI-TnP">
+                            <connections>
+                                <action selector="didTapEditBtn:" destination="b12-I3-2k7" id="p11-dY-3gx"/>
+                            </connections>
+                        </barButtonItem>
+                    </toolbarItems>
+                    <navigationItem key="navigationItem" title="Recipes" id="6dA-3T-NKR"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yYe-BD-Cbb" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -43,7 +52,7 @@
         <!--Navigation Controller-->
         <scene sceneID="Skr-s3-8HK">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="3H3-cj-n9u" sceneMemberID="viewController">
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" toolbarHidden="NO" id="3H3-cj-n9u" sceneMemberID="viewController">
                     <toolbarItems/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="x2d-fj-p3f">
@@ -51,6 +60,9 @@
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
+                    <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="BTO-g6-w8f">
+                        <autoresizingMask key="autoresizingMask"/>
+                    </toolbar>
                     <connections>
                         <segue destination="b12-I3-2k7" kind="relationship" relationship="rootViewController" id="YHc-WJ-BBT"/>
                     </connections>
