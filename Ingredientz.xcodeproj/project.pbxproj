@@ -13,8 +13,13 @@
 		686FF03D1B0446F200C19B95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686FF03C1B0446F200C19B95 /* Images.xcassets */; };
 		686FF0401B0446F200C19B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686FF03E1B0446F200C19B95 /* LaunchScreen.xib */; };
 		686FF04C1B0446F200C19B95 /* IngredientzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF04B1B0446F200C19B95 /* IngredientzTests.swift */; };
+<<<<<<< Updated upstream
 		D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */; };
 		D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */; };
+=======
+		686FF0581B044F6400C19B95 /* IngredientzCoreDataHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF0571B044F6400C19B95 /* IngredientzCoreDataHelper.swift */; };
+		686FF05A1B04523400C19B95 /* Recipe.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF0591B04523400C19B95 /* Recipe.swift */; };
+>>>>>>> Stashed changes
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,8 +43,13 @@
 		686FF0451B0446F200C19B95 /* IngredientzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngredientzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		686FF04A1B0446F200C19B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686FF04B1B0446F200C19B95 /* IngredientzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientzTests.swift; sourceTree = "<group>"; };
+<<<<<<< Updated upstream
 		D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
 		D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeListTVC.swift; path = RecipeList/RecipeListTVC.swift; sourceTree = "<group>"; };
+=======
+		686FF0571B044F6400C19B95 /* IngredientzCoreDataHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IngredientzCoreDataHelper.swift; sourceTree = "<group>"; };
+		686FF0591B04523400C19B95 /* Recipe.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Recipe.swift; sourceTree = "<group>"; };
+>>>>>>> Stashed changes
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -85,8 +95,10 @@
 				686FF0321B0446F200C19B95 /* AppDelegate.swift */,
 				686FF0391B0446F200C19B95 /* Main.storyboard */,
 				686FF03C1B0446F200C19B95 /* Images.xcassets */,
+				686FF05B1B04523D00C19B95 /* NSManaged */,
 				686FF03E1B0446F200C19B95 /* LaunchScreen.xib */,
 				686FF0341B0446F200C19B95 /* Ingredientz.xcdatamodeld */,
+				686FF0571B044F6400C19B95 /* IngredientzCoreDataHelper.swift */,
 				686FF0301B0446F200C19B95 /* Supporting Files */,
 				D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */,
 			);
@@ -116,6 +128,14 @@
 				686FF04A1B0446F200C19B95 /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		686FF05B1B04523D00C19B95 /* NSManaged */ = {
+			isa = PBXGroup;
+			children = (
+				686FF0591B04523400C19B95 /* Recipe.swift */,
+			);
+			name = NSManaged;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -219,9 +239,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+<<<<<<< Updated upstream
 				D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */,
+=======
+				686FF0581B044F6400C19B95 /* IngredientzCoreDataHelper.swift in Sources */,
+				686FF0381B0446F200C19B95 /* ViewController.swift in Sources */,
+>>>>>>> Stashed changes
 				686FF0331B0446F200C19B95 /* AppDelegate.swift in Sources */,
 				686FF0361B0446F200C19B95 /* Ingredientz.xcdatamodeld in Sources */,
+				686FF05A1B04523400C19B95 /* Recipe.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
