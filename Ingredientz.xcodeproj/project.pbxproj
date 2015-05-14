@@ -14,6 +14,7 @@
 		686FF03D1B0446F200C19B95 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 686FF03C1B0446F200C19B95 /* Images.xcassets */; };
 		686FF0401B0446F200C19B95 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 686FF03E1B0446F200C19B95 /* LaunchScreen.xib */; };
 		686FF04C1B0446F200C19B95 /* IngredientzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF04B1B0446F200C19B95 /* IngredientzTests.swift */; };
+		D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		686FF0451B0446F200C19B95 /* IngredientzTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = IngredientzTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		686FF04A1B0446F200C19B95 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		686FF04B1B0446F200C19B95 /* IngredientzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientzTests.swift; sourceTree = "<group>"; };
+		D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				686FF03E1B0446F200C19B95 /* LaunchScreen.xib */,
 				686FF0341B0446F200C19B95 /* Ingredientz.xcdatamodeld */,
 				686FF0301B0446F200C19B95 /* Supporting Files */,
+				D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */,
 			);
 			path = Ingredientz;
 			sourceTree = "<group>";
@@ -196,6 +199,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				686FF03B1B0446F200C19B95 /* Main.storyboard in Resources */,
+				D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */,
 				686FF0401B0446F200C19B95 /* LaunchScreen.xib in Resources */,
 				686FF03D1B0446F200C19B95 /* Images.xcassets in Resources */,
 			);
@@ -413,6 +417,7 @@
 				686FF0511B0446F200C19B95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		686FF0521B0446F200C19B95 /* Build configuration list for PBXNativeTarget "IngredientzTests" */ = {
 			isa = XCConfigurationList;
@@ -421,6 +426,7 @@
 				686FF0541B0446F200C19B95 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
