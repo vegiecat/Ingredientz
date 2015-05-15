@@ -1,9 +1,43 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7702" systemVersion="14C1510" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="3H3-cj-n9u">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="b48-C0-vnb">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7701"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
+        <!--Test View Controller-->
+        <scene sceneID="emq-xT-Qj3">
+            <objects>
+                <viewController id="b48-C0-vnb" customClass="TestViewController" customModule="Ingredientz" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="IV4-d2-3bf"/>
+                        <viewControllerLayoutGuide type="bottom" id="xQw-vj-aal"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="shW-9g-Thz">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tGr-YH-GwO">
+                                <rect key="frame" x="16" y="285" width="568" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="tGr-YH-GwO" firstAttribute="trailing" secondItem="shW-9g-Thz" secondAttribute="trailingMargin" id="Uqx-J7-JCh"/>
+                            <constraint firstItem="tGr-YH-GwO" firstAttribute="leading" secondItem="shW-9g-Thz" secondAttribute="leadingMargin" id="l3y-fC-Yhj"/>
+                            <constraint firstItem="tGr-YH-GwO" firstAttribute="centerY" secondItem="shW-9g-Thz" secondAttribute="centerY" id="yzO-0Y-qep"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="addField" destination="tGr-YH-GwO" id="t9s-xd-vN3"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ye0-QA-OoE" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="359" y="-323"/>
+        </scene>
         <!--Recipes-->
         <scene sceneID="dpm-iV-fff">
             <objects>
