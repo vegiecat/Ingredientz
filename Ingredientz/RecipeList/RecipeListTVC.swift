@@ -19,7 +19,7 @@ class RecipeListTVC: UITableViewController {
         static let Identifier2 = "yyy"
     }
 
-    var dataSource = IngredientzCoreDataHelper()
+    var dataSource:IngredientzCoreDataHelper?
     
     //Data Structure
     var recipes:[Recipe] = [Recipe](){
@@ -71,8 +71,14 @@ class RecipeListTVC: UITableViewController {
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        //refetch all Recipe
+        if let ds = dataSource{
+            refresh()
+        }else{
+            dataSource = IngredientzCoreDataHelper()
+            refresh()
+        }
         println("I'm From:\(imFrom)")
-        refresh()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -81,16 +87,22 @@ class RecipeListTVC: UITableViewController {
         
     }
 
+    //refetch all the Recipe by user again
     func refresh(){
-        recipes = dataSource.fetchAllRecipesByUser()
-        println(recipes.map{"\($0.name):\($0.id)"})
+        if let ds = dataSource{
+            recipes = ds.fetchAllRecipesByUser()
+            println(recipes.map{"\($0.name):\($0.id)"})
+        }
     }
 
     func saveNewRecipe(recipeName:String){
-        let newRecipe = dataSource.newRecipe()
-        newRecipe.name = recipeName
-        dataSource.save()
-        refresh()
+        if let ds = dataSource{
+            let newRecipe = ds.newRecipe()
+            newRecipe.name = recipeName
+            ds.save()
+            refresh()
+        }
+        
 
     }
     
@@ -105,7 +117,6 @@ class RecipeListTVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-
         let cell = tableView.dequeueReusableCellWithIdentifier("recipe cell", forIndexPath: indexPath) as! UITableViewCell
         cell.textLabel?.text = recipes[indexPath.row].name ?? ""
         return cell
@@ -138,11 +149,21 @@ class RecipeListTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         println("accessory button tapped")
+        
+        //setting the dataSource of the
+        dataSource?.didSelectRecipe(recipes[indexPath.row], sender: self)
+        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier{
+            if identifier == Storyboard.showRecipeDetail{
+                if let tvc = segue.destinationViewController as? RecipeDetailTVC{
+                    tvc.dataSource = self.dataSource
+                }
+            }
+        }
+    
     }
     
     

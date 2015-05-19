@@ -13,7 +13,7 @@ class IngredientzCoreDataHelper:NSObject
 {
     
     var recipeOfInterest:Recipe?
-    
+
     let globalMOC:NSManagedObjectContext = IngredientzCoreDataHelper.managedObjectContext()
     
     override init(){
@@ -49,7 +49,23 @@ class IngredientzCoreDataHelper:NSObject
         let recipe = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: globalMOC) as! Recipe
         return recipe
     }
+
+    func newIngr()->Ingr{
+        let entity = NSEntityDescription.entityForName(EntityNames.Ingredient, inManagedObjectContext: globalMOC)
+        let ingredient = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: globalMOC) as! Ingr
+        if let recipe = recipeOfInterest{
+            ingredient.recipe = recipe
+        }
+        return ingredient
+    }
+
+    func didSelectRecipe(recipeSeleted:Recipe, sender:AnyObject?){
+        recipeOfInterest = recipeSeleted
+    }
     
+    func askedForRecipeOfInterest(sender:AnyObject?)->Recipe?{
+        return recipeOfInterest
+    }
     
     //MARK: Core Data Connectivity
     class func managedObjectContext()->NSManagedObjectContext{

@@ -17,4 +17,11 @@ class Ingr: NSManagedObject {
     @NSManaged var qty: String
     @NSManaged var recipe: Recipe
 
+    override func awakeFromInsert() {
+        super.awakeFromInsert()
+        id = NSUUID().UUIDString
+        name = ""
+        qty = ""
+    }
+
 }
