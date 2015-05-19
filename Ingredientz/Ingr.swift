@@ -1,5 +1,5 @@
 //
-//  Recipe.swift
+//  Ingr.swift
 //  Ingredientz
 //
 //  Created by Vegiecat Studio on 5/15/15.
@@ -9,17 +9,12 @@
 import Foundation
 import CoreData
 
-@objc(Recipe)
-class Recipe: NSManagedObject {
+@objc(Ingr)
+class Ingr: NSManagedObject {
 
     @NSManaged var id: String
     @NSManaged var name: String
-    @NSManaged var ingr: NSOrderedSet
+    @NSManaged var qty: String
+    @NSManaged var recipe: Recipe
 
-    override func awakeFromInsert() {
-        id = NSUUID().UUIDString
-        name = ""
-    }
-    
-    
 }

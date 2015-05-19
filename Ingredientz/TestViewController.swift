@@ -12,7 +12,7 @@ import CoreData
 class TestViewController: UIViewController,UITextFieldDelegate {
 
     var people = [Recipe]()
-
+    let dataSource = IngredientzCoreDataHelper()
     
     @IBOutlet weak var addField: UITextField!{
         didSet{
@@ -32,39 +32,17 @@ class TestViewController: UIViewController,UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-
     }
 
     func addRecipe(name:String){
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let entity = NSEntityDescription.entityForName("Recipe", inManagedObjectContext: managedContext!)
-        let person = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: managedContext!)
-        person.setValue(name, forKey:"name")
-        var error:NSError?
-        if !managedContext!.save(&error){
-            println("Could not save \(error), \(error?.userInfo)")
-        }
-        println("added")
+        let person = dataSource.newRecipe()
+        person.name = name
+        dataSource.save()
         fetchRecipe()
     }
     
     func fetchRecipe(){
-        println("hello")
-        let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
-        let managedContext = appDelegate.managedObjectContext
-        let fetchRequest = NSFetchRequest(entityName: "Recipe")
-        var error:NSError?
-        
-        let fetchResults = managedContext?.executeFetchRequest(fetchRequest, error: &error) as?[NSManagedObject]
-        for i in fetchResults!{
-            println(i.valueForKey("name"))
-
-        }
-
+        let fetchResults = dataSource.fetchAllRecipesByUser()
+            println(fetchResults.map{"\($0.name):\($0.id)"})
     }
-    
-    
-
 }
