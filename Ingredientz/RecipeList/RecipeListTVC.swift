@@ -10,7 +10,7 @@ import UIKit
 
 class RecipeListTVC: UITableViewController {
     
-    private struct Storyboard{
+    private struct SegueID{
         static let showRecipeDetail = "Show Recipe Detail"
         static let Identifier2 = "yyy"
     }
@@ -37,19 +37,20 @@ class RecipeListTVC: UITableViewController {
     
     var isInEditMode = false
 
+    
     //MARK: - USER INTERACTION
     @IBAction func didTapAddBtn(sender : UIBarButtonItem) {
-        
-        var newRecipeWindow = UIAlertController(title: "New Recipe", message: "Name your best dish", preferredStyle: UIAlertControllerStyle.Alert)
-        let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
-            let textField = newRecipeWindow.textFields![0] as! UITextField
-            self.saveNewRecipe(textField.text)
-        }
-        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action:UIAlertAction!) -> Void in}
-        newRecipeWindow.addTextFieldWithConfigurationHandler { (textField:UITextField!) -> Void in}
-        newRecipeWindow.addAction(saveAction)
-        newRecipeWindow.addAction(cancelAction)
-        presentViewController(newRecipeWindow, animated: true, completion: nil)
+        recipeEditAlert(nil)
+//        var newRecipeWindow = UIAlertController(title: "New Recipe", message: "Name your best dish", preferredStyle: UIAlertControllerStyle.Alert)
+//        let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
+//            let textField = newRecipeWindow.textFields![0] as! UITextField
+//            self.saveNewRecipe(textField.text)
+//        }
+//        let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel) { (action:UIAlertAction!) -> Void in}
+//        newRecipeWindow.addTextFieldWithConfigurationHandler { (textField:UITextField!) -> Void in}
+//        newRecipeWindow.addAction(saveAction)
+//        newRecipeWindow.addAction(cancelAction)
+//        presentViewController(newRecipeWindow, animated: true, completion: nil)
         
                 //Justin's place holding code.
         /*
@@ -68,6 +69,32 @@ class RecipeListTVC: UITableViewController {
         self.tableView.setEditing(isInEditMode, animated: true)
     }
     
+    func recipeEditAlert(recipe:Recipe?){
+        if let ds = dataSource{
+            var window = UIAlertController(title: "Recipe Name", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
+                let txtFieldName = window.textFields![0] as! UITextField
+                var recipeEdited:Recipe?
+                if let recipeTemp = recipe{
+                    recipeEdited = recipeTemp
+                }else{
+                    recipeEdited = ds.newRecipe()
+                }
+                recipeEdited?.name = txtFieldName.text
+                ds.save()
+                self.refresh()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
+            window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
+                textField.text = recipe?.name ?? ""
+                textField.placeholder = "Recipe"
+            }
+            window.addAction(saveAction)
+            window.addAction(cancelAction)
+            presentViewController(window, animated: true, completion: nil)
+        }
+    }
+
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -147,6 +174,10 @@ class RecipeListTVC: UITableViewController {
 
     // MARK: - Navigation
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        recipeEditAlert(recipes[indexPath.row])
+    }
+    
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         println("accessory button tapped")
         
@@ -157,7 +188,7 @@ class RecipeListTVC: UITableViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier{
-            if identifier == Storyboard.showRecipeDetail{
+            if identifier == SegueID.showRecipeDetail{
                 if let tvc = segue.destinationViewController as? RecipeDetailTVC{
                     tvc.dataSource = self.dataSource
                 }

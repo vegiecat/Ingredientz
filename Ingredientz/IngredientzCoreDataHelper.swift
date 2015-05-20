@@ -63,7 +63,7 @@ class IngredientzCoreDataHelper:NSObject
         recipeOfInterest = recipeSeleted
     }
     
-    func askedForRecipeOfInterest(sender:AnyObject?)->Recipe?{
+    func recipeOfInterest(sender:AnyObject?)->Recipe?{
         return recipeOfInterest
     }
     

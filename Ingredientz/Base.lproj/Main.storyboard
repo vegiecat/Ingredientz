@@ -62,7 +62,6 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <segue destination="47x-eX-yRj" kind="show" identifier="Show Recipe Detail" trigger="accessoryAction" id="fBf-Wt-T53"/>
-                                    <segue destination="b5x-a7-Y1q" kind="show" id="Fpn-ps-GrB"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>

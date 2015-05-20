@@ -19,7 +19,6 @@
 		686FF04C1B0446F200C19B95 /* IngredientzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF04B1B0446F200C19B95 /* IngredientzTests.swift */; };
 		688C39401B09A83A0038F9B0 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C393F1B09A83A0038F9B0 /* GlobalVar.swift */; };
 		688C39441B0AD97C0038F9B0 /* RecipeDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */; };
-		688C39461B0B619E0038F9B0 /* RecipeDetailTVCBackup.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C39451B0B619E0038F9B0 /* RecipeDetailTVCBackup.swift */; };
 		D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */; };
 		D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */; };
 /* End PBXBuildFile section */
@@ -51,7 +50,6 @@
 		686FF04B1B0446F200C19B95 /* IngredientzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientzTests.swift; sourceTree = "<group>"; };
 		688C393F1B09A83A0038F9B0 /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailTVC.swift; sourceTree = "<group>"; };
-		688C39451B0B619E0038F9B0 /* RecipeDetailTVCBackup.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailTVCBackup.swift; sourceTree = "<group>"; };
 		D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
 		D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeListTVC.swift; path = RecipeList/RecipeListTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,12 +105,11 @@
 			children = (
 				D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */,
 				688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */,
-				688C39451B0B619E0038F9B0 /* RecipeDetailTVCBackup.swift */,
 				6866D8D61B0629F800951342 /* IngredientzCoreDataHelper.swift */,
 				6866D8C71B05829800951342 /* TestViewController.swift */,
 				688C393F1B09A83A0038F9B0 /* GlobalVar.swift */,
-				6866D8D51B0629AD00951342 /* NSManaged */,
 				686FF0391B0446F200C19B95 /* Main.storyboard */,
+				6866D8D51B0629AD00951342 /* NSManaged */,
 				686FF0301B0446F200C19B95 /* Supporting Files */,
 				D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */,
 			);
@@ -248,7 +245,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				688C39461B0B619E0038F9B0 /* RecipeDetailTVCBackup.swift in Sources */,
 				D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */,
 				686FF0331B0446F200C19B95 /* AppDelegate.swift in Sources */,
 				6866D8C81B05829800951342 /* TestViewController.swift in Sources */,
