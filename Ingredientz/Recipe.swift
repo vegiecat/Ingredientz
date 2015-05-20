@@ -15,7 +15,7 @@ class Recipe: NSManagedObject {
     @NSManaged var id: String
     @NSManaged var name: String
     @NSManaged var ingr: NSOrderedSet
-
+    
     override func awakeFromInsert() {
         super.awakeFromInsert()
         id = NSUUID().UUIDString

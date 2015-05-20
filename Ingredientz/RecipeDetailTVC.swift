@@ -69,6 +69,7 @@ class RecipeDetailTVC: UITableViewController {
         }
     }
     
+    var isInEditMode = false
     
     @IBAction func addIngredient(sender: UIBarButtonItem) {
         ingredientEditAlert(nil)
@@ -94,6 +95,12 @@ class RecipeDetailTVC: UITableViewController {
 //            presentViewController(window, animated: true, completion: nil)
 //        }
     }
+    
+    @IBAction func didTapEditBtn(sender: UIBarButtonItem) {
+        isInEditMode = !isInEditMode
+        self.tableView.setEditing(isInEditMode, animated: true)
+    }
+    
     
     //code needs to be modulaized in a later phase.
     func ingredientEditAlert(ingredient:Ingr?){
@@ -168,6 +175,8 @@ class RecipeDetailTVC: UITableViewController {
         case .ingredient(let ingredient):
             let cell = tableView.dequeueReusableCellWithIdentifier(Cells.IngredientItemCell, forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = ingredient.name
+            println("detailTextLabel:\(ingredient.qty)")
+            
             cell.detailTextLabel?.text = ingredient.qty
             return cell
         }
@@ -185,32 +194,41 @@ class RecipeDetailTVC: UITableViewController {
         }
     }
     
-    /*
+    // MARK: - Table view data source, EDITING
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
-        // Return NO if you do not want the specified item to be editable.
         return true
     }
-    */
 
-    /*
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
+            
+            if let ingredientSet = recipe?.ingr{
+                if let ingredient = ingredientSet.objectAtIndex(indexPath.row) as? Ingr{
+                    dataSource?.deleteIngr(ingredient)
+                    refresh()
+                    println("ingredient deleted")
+                }
+            }
+            
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
 
-    /*
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
+        let ingredientSet = recipe?.ingr as! NSMutableOrderedSet
+        //ingredientSet.exchangeObjectAtIndex(fromIndexPath.row, withObjectAtIndex: toIndexPath.row)
+        ingredientSet.moveObjectsAtIndexes(NSIndexSet(index: fromIndexPath.row), toIndex: toIndexPath.row)
+        let newIngredientSet = ingredientSet as NSOrderedSet
+        recipe?.ingr = newIngredientSet
+        dataSource?.save2()
+        refresh()
+        println("Order Changed")
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.

@@ -122,6 +122,7 @@ class RecipeListTVC: UITableViewController {
         }
     }
 
+    //not being used right now.
     func saveNewRecipe(recipeName:String){
         if let ds = dataSource{
             let newRecipe = ds.newRecipe()
@@ -163,10 +164,10 @@ class RecipeListTVC: UITableViewController {
         }    
     }
 
+    /*
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-
     }
-
+    */
     override func tableView(tableView: UITableView, canMoveRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the item to be re-orderable.
         return true
@@ -180,10 +181,8 @@ class RecipeListTVC: UITableViewController {
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
         println("accessory button tapped")
-        
         //setting the dataSource of the
         dataSource?.didSelectRecipe(recipes[indexPath.row], sender: self)
-        
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
@@ -194,7 +193,6 @@ class RecipeListTVC: UITableViewController {
                 }
             }
         }
-    
     }
     
     

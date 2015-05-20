@@ -49,6 +49,10 @@ class IngredientzCoreDataHelper:NSObject
         let recipe = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: globalMOC) as! Recipe
         return recipe
     }
+    
+    func deleteRecipe(recipe:Recipe){
+        globalMOC.deleteObject(recipe)
+    }
 
     func newIngr()->Ingr{
         let entity = NSEntityDescription.entityForName(EntityNames.Ingredient, inManagedObjectContext: globalMOC)
@@ -59,6 +63,11 @@ class IngredientzCoreDataHelper:NSObject
         return ingredient
     }
 
+    func deleteIngr(ingrdient:Ingr){
+        globalMOC.deleteObject(ingrdient)
+    }
+
+    
     func didSelectRecipe(recipeSeleted:Recipe, sender:AnyObject?){
         recipeOfInterest = recipeSeleted
     }
@@ -74,6 +83,12 @@ class IngredientzCoreDataHelper:NSObject
         return managedObjectContext
     }
 
+    func save2(){
+        var error: NSError? = nil
+        globalMOC.save(&error)
+        println("save2 triggered")
+    }
+    
     func save(){
         var error: NSError? = nil
         if globalMOC.hasChanges && !globalMOC.save(&error) {

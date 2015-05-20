@@ -314,7 +314,7 @@
                         <barButtonItem style="plain" systemItem="flexibleSpace" id="8TD-td-gbz"/>
                         <barButtonItem systemItem="edit" id="nyv-0n-KO4">
                             <connections>
-                                <action selector="didTapEditBtn:" destination="b12-I3-2k7" id="rso-xy-V1R"/>
+                                <action selector="didTapEditBtn:" destination="47x-eX-yRj" id="dhG-uR-VmW"/>
                             </connections>
                         </barButtonItem>
                     </toolbarItems>
