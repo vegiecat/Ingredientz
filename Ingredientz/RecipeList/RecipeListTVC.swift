@@ -25,7 +25,7 @@ class RecipeListTVC: UITableViewController {
     var recipes:[Recipe] = [Recipe](){
         didSet{
             println("recipes did set")
-            tableView.reloadData()
+            // 20150520: we used to reload tableview here, but to get insert row animation to work, we removed it
         }
     }
     //used to check for segue connectivity
@@ -79,26 +79,30 @@ class RecipeListTVC: UITableViewController {
                 var recipeEdited:Recipe?
                 if let recipeTemp = recipe{
                     recipeEdited = recipeTemp
+                    recipeEdited?.name = txtFieldName.text
+                    ds.save()
+                    self.refresh()
                 }else{
                     //create the index path for the new recipe
                     let lastRowIndexPath = NSIndexPath(forRow:self.recipes.count, inSection: 0);
                     
                     //create the new recipe and update our model
                     recipeEdited = ds.newRecipe()
-                    
-                    /* 
-                    if let recipeNew = recipeEdited{
-                    self.recipes.append(recipeNew)
-                    
-                    self.tableView!.insertRowsAtIndexPaths([lastRowIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
-                    }
-                    */
-                }
+                    recipeEdited?.name = txtFieldName.text
 
-                recipeEdited?.name = txtFieldName.text
-                ds.save()
-                self.refresh()
+                    if let recipeNew = recipeEdited{
+                        //update the model here
+                        self.recipes.append(recipeNew)
+                        
+                        //now tell the view to get updated
+                        self.tableView!.insertRowsAtIndexPaths([lastRowIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+
+                        //save
+                        ds.save()
+                    }
+                }
             }
+            
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
             window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
                 textField.text = recipe?.name ?? ""
@@ -134,6 +138,7 @@ class RecipeListTVC: UITableViewController {
         if let ds = dataSource{
             recipes = ds.fetchAllRecipesByUser()
             println(recipes.map{"\($0.name):\($0.id)"})
+            tableView.reloadData()
         }
     }
 
