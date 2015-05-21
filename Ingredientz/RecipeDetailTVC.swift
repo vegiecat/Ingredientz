@@ -207,7 +207,9 @@ class RecipeDetailTVC: UITableViewController {
             
             if let ingredientSet = recipe?.ingr{
                 if let ingredient = ingredientSet.objectAtIndex(indexPath.row) as? Ingr{
+                    println(ingredient)
                     dataSource?.deleteIngr(ingredient)
+                    
                     refresh()
                     println("ingredient deleted")
                 }
@@ -215,7 +217,7 @@ class RecipeDetailTVC: UITableViewController {
             
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+        }
     }
 
     // Override to support rearranging the table view.
@@ -227,7 +229,6 @@ class RecipeDetailTVC: UITableViewController {
         recipe?.ingr = newIngredientSet
         dataSource?.save2()
         refresh()
-        println("Order Changed")
     }
 
     /*

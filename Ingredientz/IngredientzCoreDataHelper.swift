@@ -84,9 +84,10 @@ class IngredientzCoreDataHelper:NSObject
     }
 
     func save2(){
+        println("save2 triggered")
         var error: NSError? = nil
         globalMOC.save(&error)
-        println("save2 triggered")
+        println("error from save2:\(error)")
     }
     
     func save(){
