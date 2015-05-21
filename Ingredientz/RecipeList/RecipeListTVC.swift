@@ -188,6 +188,12 @@ class RecipeListTVC: UITableViewController {
         return true
     }
 
+    // MARK: - Section Text
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        return "Tap + button to add recipe."
+    }
+    
+    
     // MARK: - Navigation
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
