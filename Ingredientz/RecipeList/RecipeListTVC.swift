@@ -69,10 +69,6 @@ class RecipeListTVC: UITableViewController {
         self.tableView.setEditing(isInEditMode, animated: true)
     }
     
-    @IBAction func didTapInfoBtn(sender: UIButton) {
-        //recipeEditAlert(recipes[indexPath.row])
-    }
-    
     
     func recipeEditAlert(recipe:Recipe?){
         if let ds = dataSource{
@@ -168,7 +164,7 @@ class RecipeListTVC: UITableViewController {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-
+    
     /*
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
     }
@@ -181,12 +177,13 @@ class RecipeListTVC: UITableViewController {
     // MARK: - Navigation
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        //setting the dataSource of the
+        dataSource?.didSelectRecipe(recipes[indexPath.row], sender: self)
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
+        recipeEditAlert(recipes[indexPath.row])
         println("accessory button tapped")
-        //setting the dataSource of the
-        dataSource?.didSelectRecipe(recipes[indexPath.row], sender: self)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
