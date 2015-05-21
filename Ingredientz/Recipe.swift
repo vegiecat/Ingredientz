@@ -22,5 +22,10 @@ class Recipe: NSManagedObject {
         name = ""
     }
     
+    override var description : String{
+        let ingrNames = "\(ingr.array.map{$0.name})"
+        var returnString = "Name:\(name) \n" + ingrNames
+        return returnString
+    }
     
 }

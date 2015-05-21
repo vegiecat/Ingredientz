@@ -11,7 +11,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <relationship name="ingr" optional="YES" toMany="YES" deletionRule="Cascade" ordered="YES" destinationEntity="Ingr" inverseName="recipe" inverseEntity="Ingr" syncable="YES"/>
     </entity>
-    <fetchRequest name="FetchAllRecipe" entity="Recipe"/>
+    <fetchRequest name="FetchRecipeOfInterest" entity="Recipe" predicateString="id == &quot;id&quot;"/>
     <elements>
         <element name="Ingr" positionX="-54" positionY="9" width="128" height="105"/>
         <element name="Recipe" positionX="-63" positionY="-18" width="128" height="90"/>

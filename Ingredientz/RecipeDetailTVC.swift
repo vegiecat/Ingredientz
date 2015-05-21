@@ -204,14 +204,10 @@ class RecipeDetailTVC: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            
             if let ingredientSet = recipe?.ingr{
                 if let ingredient = ingredientSet.objectAtIndex(indexPath.row) as? Ingr{
-                    println(ingredient)
                     dataSource?.deleteIngr(ingredient)
-                    
                     refresh()
-                    println("ingredient deleted")
                 }
             }
             
@@ -224,7 +220,9 @@ class RecipeDetailTVC: UITableViewController {
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
         let ingredientSet = recipe?.ingr as! NSMutableOrderedSet
         //ingredientSet.exchangeObjectAtIndex(fromIndexPath.row, withObjectAtIndex: toIndexPath.row)
-        ingredientSet.moveObjectsAtIndexes(NSIndexSet(index: fromIndexPath.row), toIndex: toIndexPath.row)
+        //ingredientSet.moveObjectsAtIndexes(NSIndexSet(index: fromIndexPath.row), toIndex: toIndexPath.row)
+        //ingredientSet.removeObjectAtIndex(fromIndexPath.row)
+        ingredientSet.removeAllObjects()
         let newIngredientSet = ingredientSet as NSOrderedSet
         recipe?.ingr = newIngredientSet
         dataSource?.save2()

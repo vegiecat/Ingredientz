@@ -43,6 +43,29 @@ class IngredientzCoreDataHelper:NSObject
 //        }
     }
     
+    func reloadRecipeOfInterest(){
+        if let recipe = recipeOfInterest{
+            let recipes = fetchAllRecipesByUser()
+            let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
+            recipeOfInterest = newRecipe
+            println(recipeOfInterest)
+//            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
+//            fetchRequest.predicate = NSPredicate(format: "%K = %@", "id", recipe.id)
+//            var error:NSError?
+//            let fetchResult = globalMOC.executeFetchRequest(fetchRequest, error: &error) as? Recipe
+//            if error != nil{
+//                println(error)
+//            }
+//            
+//            if let result = fetchResult{
+//                recipeOfInterest = result
+//                println(result)
+//            }else{
+//                println("There was an Problem with fetchAllRecipesByUser()")
+//            }
+        }
+    }
+    
     //MARK: Managing Recipes
     func newRecipe()->Recipe{
         let entity = NSEntityDescription.entityForName(EntityNames.Recipe, inManagedObjectContext: globalMOC)
@@ -52,6 +75,8 @@ class IngredientzCoreDataHelper:NSObject
     
     func deleteRecipe(recipe:Recipe){
         globalMOC.deleteObject(recipe)
+        save()
+        reloadRecipeOfInterest()
     }
 
     func newIngr()->Ingr{
@@ -65,6 +90,8 @@ class IngredientzCoreDataHelper:NSObject
 
     func deleteIngr(ingrdient:Ingr){
         globalMOC.deleteObject(ingrdient)
+        save()
+        reloadRecipeOfInterest()
     }
 
     
@@ -88,6 +115,7 @@ class IngredientzCoreDataHelper:NSObject
         var error: NSError? = nil
         globalMOC.save(&error)
         println("error from save2:\(error)")
+        reloadRecipeOfInterest()
     }
     
     func save(){
