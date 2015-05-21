@@ -69,6 +69,11 @@ class RecipeListTVC: UITableViewController {
         self.tableView.setEditing(isInEditMode, animated: true)
     }
     
+    @IBAction func didTapInfoBtn(sender: UIButton) {
+        //recipeEditAlert(recipes[indexPath.row])
+    }
+    
+    
     func recipeEditAlert(recipe:Recipe?){
         if let ds = dataSource{
             var window = UIAlertController(title: "Recipe Name", message: "", preferredStyle: UIAlertControllerStyle.Alert)
@@ -176,7 +181,6 @@ class RecipeListTVC: UITableViewController {
     // MARK: - Navigation
     
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        recipeEditAlert(recipes[indexPath.row])
     }
     
     override func tableView(tableView: UITableView, accessoryButtonTappedForRowWithIndexPath indexPath: NSIndexPath) {
