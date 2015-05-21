@@ -171,6 +171,7 @@ class RecipeDetailTVC: UITableViewController {
         case .name(let name):
             let cell = tableView.dequeueReusableCellWithIdentifier(Cells.RecipeDetailGeneral, forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = name
+            cell.selectionStyle = UITableViewCellSelectionStyle.None;
             return cell
         case .ingredient(let ingredient):
             let cell = tableView.dequeueReusableCellWithIdentifier(Cells.IngredientItemCell, forIndexPath: indexPath) as! UITableViewCell
