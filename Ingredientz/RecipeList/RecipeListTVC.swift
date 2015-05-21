@@ -24,6 +24,7 @@ class RecipeListTVC: UITableViewController {
     //Data Structure
     var recipes:[Recipe] = [Recipe](){
         didSet{
+            println("recipes did set")
             tableView.reloadData()
         }
     }
@@ -79,8 +80,21 @@ class RecipeListTVC: UITableViewController {
                 if let recipeTemp = recipe{
                     recipeEdited = recipeTemp
                 }else{
+                    //create the index path for the new recipe
+                    let lastRowIndexPath = NSIndexPath(forRow:self.recipes.count, inSection: 0);
+                    
+                    //create the new recipe and update our model
                     recipeEdited = ds.newRecipe()
+                    
+                    /* 
+                    if let recipeNew = recipeEdited{
+                    self.recipes.append(recipeNew)
+                    
+                    self.tableView!.insertRowsAtIndexPaths([lastRowIndexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+                    }
+                    */
                 }
+
                 recipeEdited?.name = txtFieldName.text
                 ds.save()
                 self.refresh()
