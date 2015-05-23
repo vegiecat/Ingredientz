@@ -24,7 +24,7 @@ class RecipeListTVC: UITableViewController {
     //Data Structure
     var recipes:[Recipe] = [Recipe](){
         didSet{
-            println("recipes did set")
+            println("recipes did set, tableview is no longer reloaded")
             // 20150520: we used to reload tableview here, but to get insert row animation to work, we removed it
         }
     }

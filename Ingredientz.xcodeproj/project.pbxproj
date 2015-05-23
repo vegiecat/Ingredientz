@@ -19,6 +19,7 @@
 		686FF04C1B0446F200C19B95 /* IngredientzTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686FF04B1B0446F200C19B95 /* IngredientzTests.swift */; };
 		688C39401B09A83A0038F9B0 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C393F1B09A83A0038F9B0 /* GlobalVar.swift */; };
 		688C39441B0AD97C0038F9B0 /* RecipeDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */; };
+		D0DC840B1B1030A600128992 /* KitchenModeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC840A1B1030A600128992 /* KitchenModeVC.swift */; };
 		D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */; };
 		D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */; };
 /* End PBXBuildFile section */
@@ -50,6 +51,7 @@
 		686FF04B1B0446F200C19B95 /* IngredientzTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IngredientzTests.swift; sourceTree = "<group>"; };
 		688C393F1B09A83A0038F9B0 /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailTVC.swift; sourceTree = "<group>"; };
+		D0DC840A1B1030A600128992 /* KitchenModeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KitchenModeVC.swift; path = "Kitchen Mode/KitchenModeVC.swift"; sourceTree = "<group>"; };
 		D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
 		D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeListTVC.swift; path = RecipeList/RecipeListTVC.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -107,6 +109,7 @@
 				688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */,
 				6866D8D61B0629F800951342 /* IngredientzCoreDataHelper.swift */,
 				6866D8C71B05829800951342 /* TestViewController.swift */,
+				D0DC840A1B1030A600128992 /* KitchenModeVC.swift */,
 				688C393F1B09A83A0038F9B0 /* GlobalVar.swift */,
 				686FF0391B0446F200C19B95 /* Main.storyboard */,
 				6866D8D51B0629AD00951342 /* NSManaged */,
@@ -247,6 +250,7 @@
 			files = (
 				D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */,
 				686FF0331B0446F200C19B95 /* AppDelegate.swift in Sources */,
+				D0DC840B1B1030A600128992 /* KitchenModeVC.swift in Sources */,
 				6866D8C81B05829800951342 /* TestViewController.swift in Sources */,
 				6866D8D41B05ECE200951342 /* Recipe.swift in Sources */,
 				688C39401B09A83A0038F9B0 /* GlobalVar.swift in Sources */,
