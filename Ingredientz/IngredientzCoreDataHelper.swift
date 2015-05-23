@@ -24,6 +24,8 @@ class IngredientzCoreDataHelper:NSObject
     //MARK: Fetch
     func fetchAllRecipesByUser()->[Recipe]{
         let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
+        fetchRequest.shouldRefreshRefetchedObjects = true
+        fetchRequest.includesPendingChanges = false
         var error:NSError?
         
         let fetchResult = globalMOC.executeFetchRequest(fetchRequest, error: &error) as?[Recipe]
@@ -45,10 +47,13 @@ class IngredientzCoreDataHelper:NSObject
     
     func reloadRecipeOfInterest(){
         if let recipe = recipeOfInterest{
-            let recipes = fetchAllRecipesByUser()
-            let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
-            recipeOfInterest = newRecipe
-            println(recipeOfInterest)
+            globalMOC.refreshObject(recipe, mergeChanges: true)
+            //println(recipeOfInterest)
+        }
+//        let recipes = fetchAllRecipesByUser()
+//        let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
+//        recipeOfInterest = nil
+//        recipeOfInterest = newRecipe
 //            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
 //            fetchRequest.predicate = NSPredicate(format: "%K = %@", "id", recipe.id)
 //            var error:NSError?
@@ -63,7 +68,6 @@ class IngredientzCoreDataHelper:NSObject
 //            }else{
 //                println("There was an Problem with fetchAllRecipesByUser()")
 //            }
-        }
     }
     
     //MARK: Managing Recipes
@@ -84,6 +88,7 @@ class IngredientzCoreDataHelper:NSObject
         let ingredient = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: globalMOC) as! Ingr
         if let recipe = recipeOfInterest{
             ingredient.recipe = recipe
+            ingredient.order = recipe.ingr.count
         }
         return ingredient
     }

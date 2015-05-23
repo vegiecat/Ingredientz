@@ -32,7 +32,9 @@ class RecipeDetailTVC: UITableViewController {
     // Public API
     var recipe:Recipe?{
         didSet{
+            println("-----------------------------------------------------")
             println("Recipe got Set.")
+            
             recipeContents.append(RecipeSection(title: SectionTitles.name, recipeItems:[RecipeItem.name(recipe!.name)] ))
             let ingrdientsArray = recipe!.ingr.array as! [Ingr]
             //let test = ingrdientsArray.map{(ingr:Ingr)->String in return ingr.name}
@@ -176,8 +178,7 @@ class RecipeDetailTVC: UITableViewController {
         case .ingredient(let ingredient):
             let cell = tableView.dequeueReusableCellWithIdentifier(Cells.IngredientItemCell, forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = ingredient.name
-            println("detailTextLabel:\(ingredient.qty)")
-            
+            println("detailTextLabel:\(ingredient.qty) order:\(ingredient.order)")
             cell.detailTextLabel?.text = ingredient.qty
             return cell
         }
@@ -191,7 +192,6 @@ class RecipeDetailTVC: UITableViewController {
             println("decide if we should let them edit name here")
         case .ingredient(let ingredient):
             ingredientEditAlert(ingredient)
-            
         }
     }
     
@@ -220,15 +220,38 @@ class RecipeDetailTVC: UITableViewController {
 
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
-        let ingredientSet = recipe?.ingr as! NSMutableOrderedSet
+        var ingredientSet = recipe?.ingr.array as! [Ingr]
+        ingredientSet.moveObjectsAtIndexes(fromIndexPath.row, toIndex: toIndexPath.row)
+        for i in 1...ingredientSet.count{
+            ingredientSet[i-1].order = i
+        }
+
+
+        
+//        let temp = ingredientSet[fromIndexPath.row] as!Ingr
+//        ingredientSet.moveObjectsAtIndexes(NSIndexSet(index: fromIndexPath.row), toIndex: toIndexPath.row)
+        
+//        var i = 1
+//        for ingr in ingredientSet.array as! [Ingr]{
+//            println(ingr)
+//            ingr.order = i
+//            i = i+1
+//        }
         //ingredientSet.exchangeObjectAtIndex(fromIndexPath.row, withObjectAtIndex: toIndexPath.row)
-        //ingredientSet.moveObjectsAtIndexes(NSIndexSet(index: fromIndexPath.row), toIndex: toIndexPath.row)
         //ingredientSet.removeObjectAtIndex(fromIndexPath.row)
-        ingredientSet.removeAllObjects()
-        let newIngredientSet = ingredientSet as NSOrderedSet
-        recipe?.ingr = newIngredientSet
-        dataSource?.save2()
+//        let newIngredientSet = ingredientSet as NSOrderedSet
+//        recipe?.ingr = newIngredientSet
+        
+        dataSource?.save()
+        dataSource?.reloadRecipeOfInterest()
         refresh()
+        
+//        println(recipe?.hasChanges)
+//        let temp = recipe?.ingr.array as! [Ingr]
+//        for tempIngr in temp{
+//            println(tempIngr.hasChanges)
+//        }
+
     }
 
     /*
@@ -249,4 +272,11 @@ class RecipeDetailTVC: UITableViewController {
     }
     */
 
+}
+
+extension Array{
+    mutating func moveObjectsAtIndexes(index:Int, toIndex:Int){
+        let temp = self.removeAtIndex(index)
+        self.insert(temp, atIndex: toIndex)
+    }
 }

@@ -15,11 +15,19 @@ class Recipe: NSManagedObject {
     @NSManaged var id: String
     @NSManaged var name: String
     @NSManaged var ingr: NSOrderedSet
+    @NSManaged var order: Int
     
     override func awakeFromInsert() {
         super.awakeFromInsert()
         id = NSUUID().UUIDString
         name = ""
+    }
+    
+    override func awakeFromFetch() {
+        super.awakeFromFetch()
+        var ingredientArray = ingr.array as! [Ingr]
+        ingredientArray.sort{$0.order < $1.order}
+        ingr = NSOrderedSet(array: ingredientArray)
     }
     
     override var description : String{
