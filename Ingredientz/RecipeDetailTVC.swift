@@ -11,7 +11,7 @@ import UIKit
 class RecipeDetailTVC: UITableViewController {
 
     private struct SegueID{
-        static let ID1 = "xxx"
+        static let kitchenModeSegueID = "show kitchen mode"
         static let ID2 = "yyy"
     }
     private struct Cells{
@@ -264,19 +264,19 @@ class RecipeDetailTVC: UITableViewController {
     */
 
   
-    let kitchenModeSegueID = "show kitchen mode"
 
     // MARK: - Navgiation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier{
-            if identifier == kitchenModeSegueID {
+            if identifier == SegueID.kitchenModeSegueID {
                 if let kmvc = segue.destinationViewController as? KitchenModeVC{
                     
                     // TODO: needs this to be wired up
                     
                     //kitchen mode vc needs an array of ingr names and array of qty
-                    kmvc.ingredientNames = ["i","am","not","wired","up"]
-                    kmvc.quantities = ["1","2","3","4","5"]
+                    let ingrArray = recipe?.ingr.array as! [Ingr]
+                    kmvc.ingredientNames = ingrArray.map{$0.name}
+                    kmvc.quantities = ingrArray.map{$0.qty}
                 }
                 
             }
