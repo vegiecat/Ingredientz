@@ -107,9 +107,9 @@
 			children = (
 				D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */,
 				688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */,
+				D0DC840A1B1030A600128992 /* KitchenModeVC.swift */,
 				6866D8D61B0629F800951342 /* IngredientzCoreDataHelper.swift */,
 				6866D8C71B05829800951342 /* TestViewController.swift */,
-				D0DC840A1B1030A600128992 /* KitchenModeVC.swift */,
 				688C393F1B09A83A0038F9B0 /* GlobalVar.swift */,
 				686FF0391B0446F200C19B95 /* Main.storyboard */,
 				6866D8D51B0629AD00951342 /* NSManaged */,

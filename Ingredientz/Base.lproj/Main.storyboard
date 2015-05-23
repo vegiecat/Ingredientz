@@ -321,7 +321,7 @@
                     <navigationItem key="navigationItem" id="2pS-6b-3kH">
                         <barButtonItem key="rightBarButtonItem" title="Kitchen Mode" id="HyQ-Fn-Zgj">
                             <connections>
-                                <segue destination="zLM-Dl-jjN" kind="show" id="U1X-3x-BRQ"/>
+                                <segue destination="zLM-Dl-jjN" kind="show" identifier="show kitchen mode" id="U1X-3x-BRQ"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>

@@ -29,6 +29,7 @@ class RecipeDetailTVC: UITableViewController {
         }
     }
     
+    
     // Public API
     var recipe:Recipe?{
         didSet{
@@ -262,15 +263,27 @@ class RecipeDetailTVC: UITableViewController {
     }
     */
 
-    /*
-    // MARK: - Navigation
+  
+    let kitchenModeSegueID = "show kitchen mode"
 
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
+    // MARK: - Navgiation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
+        if let identifier = segue.identifier{
+            if identifier == kitchenModeSegueID {
+                if let kmvc = segue.destinationViewController as? KitchenModeVC{
+                    
+                    // TODO: needs this to be wired up
+                    
+                    //kitchen mode vc needs an array of ingr names and array of qty
+                    kmvc.ingredientNames = ["i","am","not","wired","up"]
+                    kmvc.quantities = ["1","2","3","4","5"]
+                }
+                
+            }
+            
+        }
+        
     }
-    */
 
 }
 

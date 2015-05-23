@@ -9,6 +9,8 @@ class KitchenModeVC: UIViewController {
     var ingredientNames = ["Pop corn","ketchup"]
     var quantities = ["A lot of it","just a little bit"]
 
+    // MARK: - Private Beyond this point
+
     var ingredientIndex = 0
     
     @IBOutlet weak var previousButton: UIButton!
@@ -39,8 +41,6 @@ class KitchenModeVC: UIViewController {
     }
     
     
-    //TODO: check to see if array is empty
-    
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -53,6 +53,7 @@ class KitchenModeVC: UIViewController {
         }
     }
     
+    // MARK: - UI Update
     func updateUI() {
         ingredientLabel.text = ingredientNames[ingredientIndex]
         quantityLabel.text = quantities[ingredientIndex]
@@ -70,6 +71,5 @@ class KitchenModeVC: UIViewController {
         } else {
             nextButton.hidden = false
         }
-        
     }
-}
+  }
