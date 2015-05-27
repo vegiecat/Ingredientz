@@ -26,6 +26,15 @@ class Recipe: NSManagedObject {
     override func awakeFromFetch() {
         super.awakeFromFetch()
         var ingredientArray = ingr.array as! [Ingr]
+        println("----------------Recipe awakeFromFetch()----------------")
+        println("IngredientArray.count:\(ingredientArray.count)")
+        println(ingredientArray)
+        
+//        println("ingredientArray:\(ingredientArray.map{$0.name})")
+//        for ingredient in ingredientArray{
+//            println("ingredientName:\(ingredient.name)  order:\(ingredient.order)")
+//        }
+        
         ingredientArray.sort{$0.order < $1.order}
         ingr = NSOrderedSet(array: ingredientArray)
     }

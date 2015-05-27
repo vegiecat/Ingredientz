@@ -46,28 +46,32 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func reloadRecipeOfInterest(){
-        if let recipe = recipeOfInterest{
-            globalMOC.refreshObject(recipe, mergeChanges: true)
-            //println(recipeOfInterest)
-        }
-//        let recipes = fetchAllRecipesByUser()
-//        let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
-//        recipeOfInterest = nil
-//        recipeOfInterest = newRecipe
+        println("----------------Helper reloadRecipeOfInterest()----------------")
+        println("recipeOfInterest BEFORE reload:\(recipeOfInterest)")
+        //if let recipe = recipeOfInterest{
+            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: true)
+            
 //            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
-//            fetchRequest.predicate = NSPredicate(format: "%K = %@", "id", recipe.id)
+//            fetchRequest.predicate = NSPredicate(format: "id = %@", recipe.id)
 //            var error:NSError?
-//            let fetchResult = globalMOC.executeFetchRequest(fetchRequest, error: &error) as? Recipe
+//            let fetchResult = globalMOC.executeFetchRequest(fetchRequest, error: &error) as? [Recipe]
 //            if error != nil{
 //                println(error)
 //            }
-//            
+//
 //            if let result = fetchResult{
-//                recipeOfInterest = result
+//                recipeOfInterest = result.first
 //                println(result)
 //            }else{
 //                println("There was an Problem with fetchAllRecipesByUser()")
 //            }
+        //}
+        println("recipeOfInterest AFTER reload:\(recipeOfInterest)")
+        
+//        let recipes = fetchAllRecipesByUser()
+//        let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
+//        recipeOfInterest = nil
+//        recipeOfInterest = newRecipe
     }
     
     //MARK: Managing Recipes
@@ -95,8 +99,11 @@ class IngredientzCoreDataHelper:NSObject
 
     func deleteIngr(ingrdient:Ingr){
         globalMOC.deleteObject(ingrdient)
+        println("*********************************************************************")
+        println("deleteIngr excuted")
         save()
         reloadRecipeOfInterest()
+
     }
 
     
@@ -105,6 +112,7 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func recipeOfInterest(sender:AnyObject?)->Recipe?{
+        reloadRecipeOfInterest()
         return recipeOfInterest
     }
     

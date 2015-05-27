@@ -25,23 +25,24 @@ class RecipeDetailTVC: UITableViewController {
 
     var dataSource:IngredientzCoreDataHelper?{
         didSet{
-            println("dataSource got set")
+            println("----------------RecipeDetailTVC dataSource didSet{}----------------")
         }
     }
     
-    
+    //used to check for segue connectivity
+    var imFrom:String?
+
     // Public API
     var recipe:Recipe?{
         didSet{
-            println("-----------------------------------------------------")
-            println("Recipe got Set.")
-            
+            println("----------------RecipeDetailTVC recipe didSet{}----------------")
             recipeContents.append(RecipeSection(title: SectionTitles.name, recipeItems:[RecipeItem.name(recipe!.name)] ))
             let ingrdientsArray = recipe!.ingr.array as! [Ingr]
             //let test = ingrdientsArray.map{(ingr:Ingr)->String in return ingr.name}
             let ingredients = RecipeSection(title: SectionTitles.ingredients, recipeItems: ingrdientsArray.map{RecipeItem.ingredient($0)})
             recipeContents.append(ingredients)
             tableView.reloadData()
+            
         }
     }
     
@@ -143,6 +144,7 @@ class RecipeDetailTVC: UITableViewController {
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("----------------RecipeListTVC is From:\(imFrom)----------------")
         if let ds = dataSource{
             refresh()
         }
@@ -179,8 +181,15 @@ class RecipeDetailTVC: UITableViewController {
         case .ingredient(let ingredient):
             let cell = tableView.dequeueReusableCellWithIdentifier(Cells.IngredientItemCell, forIndexPath: indexPath) as! UITableViewCell
             cell.textLabel?.text = ingredient.name
-            println("detailTextLabel:\(ingredient.qty) order:\(ingredient.order)")
-            cell.detailTextLabel?.text = ingredient.qty
+            //println("detailTextLabel:\(ingredient.qty) order:\(ingredient.order)")
+            
+            cell.detailTextLabel?.text = ingredient.qty ?? ""
+            if ingredient.qty != "" {
+                cell.layoutIfNeeded()
+            }
+            //println("detailTextLabel.text:\(cell.detailTextLabel?.text)")
+            
+            
             return cell
         }
         
@@ -263,8 +272,8 @@ class RecipeDetailTVC: UITableViewController {
     }
     */
 
-  
 
+    
     // MARK: - Navgiation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if let identifier = segue.identifier{
@@ -278,13 +287,9 @@ class RecipeDetailTVC: UITableViewController {
                     kmvc.ingredientNames = ingrArray.map{$0.name}
                     kmvc.quantities = ingrArray.map{$0.qty}
                 }
-                
             }
-            
         }
-        
     }
-
 }
 
 extension Array{

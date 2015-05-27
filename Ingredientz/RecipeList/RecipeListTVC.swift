@@ -24,7 +24,7 @@ class RecipeListTVC: UITableViewController {
     //Data Structure
     var recipes:[Recipe] = [Recipe](){
         didSet{
-            println("recipes did set, tableview is no longer reloaded")
+            println("RecipeListTVC Recipe Array did set, tableview is no longer reloaded")
             // 20150520: we used to reload tableview here, but to get insert row animation to work, we removed it
         }
     }
@@ -117,6 +117,7 @@ class RecipeListTVC: UITableViewController {
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        println("----------------RecipeListTVC is From:\(imFrom)----------------")
         //refetch all Recipe
         if let ds = dataSource{
             refresh()
@@ -124,7 +125,6 @@ class RecipeListTVC: UITableViewController {
             dataSource = IngredientzCoreDataHelper()
             refresh()
         }
-        println("I'm From:\(imFrom)")
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -135,9 +135,10 @@ class RecipeListTVC: UITableViewController {
 
     //refetch all the Recipe by user again
     func refresh(){
+        println("----------------RecipeListTVC refresh()----------------")
         if let ds = dataSource{
             recipes = ds.fetchAllRecipesByUser()
-            println(recipes.map{"\($0.name):\($0.id)"})
+            //println(recipes.map{"\($0.name):\($0.id)"})
             tableView.reloadData()
         }
     }
