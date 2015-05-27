@@ -216,11 +216,18 @@ class RecipeDetailTVC: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
-            if let ingredientSet = recipe?.ingr{
-                if let ingredient = ingredientSet.objectAtIndex(indexPath.row) as? Ingr{
-                    dataSource?.deleteIngr(ingredient)
-                    refresh()
-                }
+//            if let ingredientSet = recipe?.ingr{
+//                if let ingredient = ingredientSet.objectAtIndex(indexPath.row) as? Ingr{
+//                    dataSource?.deleteIngr(ingredient)
+//                    refresh()
+//                }
+//            }
+            if var ingredientArray = recipe?.ingr.array as? [Ingr]{
+                let ingredientToBeRemoved = ingredientArray.removeAtIndex(indexPath.row)
+                recipe?.ingr = NSOrderedSet(array: ingredientArray)
+                
+                dataSource?.deleteIngr(ingredientToBeRemoved)
+                refresh()
             }
             
         } else if editingStyle == .Insert {

@@ -49,7 +49,7 @@ class IngredientzCoreDataHelper:NSObject
         println("----------------Helper reloadRecipeOfInterest()----------------")
         println("recipeOfInterest BEFORE reload:\(recipeOfInterest)")
         //if let recipe = recipeOfInterest{
-            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: true)
+            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: false)
             
 //            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
 //            fetchRequest.predicate = NSPredicate(format: "id = %@", recipe.id)
@@ -97,8 +97,9 @@ class IngredientzCoreDataHelper:NSObject
         return ingredient
     }
 
-    func deleteIngr(ingrdient:Ingr){
-        globalMOC.deleteObject(ingrdient)
+    func deleteIngr(ingredient:Ingr){
+        var ingrArray = ingredient.recipe.ingr.array as! [Ingr]
+        globalMOC.deleteObject(ingredient)
         println("*********************************************************************")
         println("deleteIngr excuted")
         save()
