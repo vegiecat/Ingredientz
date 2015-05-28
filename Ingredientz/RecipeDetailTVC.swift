@@ -215,6 +215,19 @@ class RecipeDetailTVC: UITableViewController {
     // Override to support editing the table view.
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
+            
+            var recipeItem = recipeContents[indexPath.section].recipeItems.removeAtIndex(indexPath.row)
+            
+            switch recipeItem{
+            case .name:
+                println("")
+            case .ingredient(let ingredientToBeDeleted):
+                dataSource?.deleteIngr(ingredientToBeDeleted)
+            }
+            
+            tableView.reloadData()
+
+            
             // Delete the row from the data source
 //            if let ingredientSet = recipe?.ingr{
 //                if let ingredient = ingredientSet.objectAtIndex(indexPath.row) as? Ingr{
@@ -222,13 +235,17 @@ class RecipeDetailTVC: UITableViewController {
 //                    refresh()
 //                }
 //            }
-            if var ingredientArray = recipe?.ingr.array as? [Ingr]{
-                let ingredientToBeRemoved = ingredientArray.removeAtIndex(indexPath.row)
-                recipe?.ingr = NSOrderedSet(array: ingredientArray)
-                //dataSource?.updateRecipe(recipe!)
-                dataSource?.deleteIngr(ingredientToBeRemoved)
-                refresh()
-            }
+
+//            if var ingredientArray = recipe?.ingr.array as? [Ingr]{
+//                let ingredientToBeRemoved = ingredientArray.removeAtIndex(indexPath.row)
+//                recipe?.ingr = NSOrderedSet(array: ingredientArray)
+//                //dataSource?.updateRecipe(recipe!)
+//                dataSource?.deleteIngr(ingredientToBeRemoved)
+//                refresh()
+//            }
+            
+            
+            
             
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -237,13 +254,20 @@ class RecipeDetailTVC: UITableViewController {
 
     // Override to support rearranging the table view.
     override func tableView(tableView: UITableView, moveRowAtIndexPath fromIndexPath: NSIndexPath, toIndexPath: NSIndexPath) {
+        
+        var arrayOfInterest = recipeContents[fromIndexPath.section].recipeItems
+        arrayOfInterest.moveObjectsAtIndexes(fromIndexPath.row, toIndex: toIndexPath.row)
+        recipeContents[fromIndexPath.section].recipeItems = arrayOfInterest
+        tableView.reloadData()
+        
+        //Updating to the Core Data Store
         var ingredientSet = recipe?.ingr.array as! [Ingr]
         ingredientSet.moveObjectsAtIndexes(fromIndexPath.row, toIndex: toIndexPath.row)
         for i in 1...ingredientSet.count{
             ingredientSet[i-1].order = i
         }
-
-
+        dataSource?.save()
+        //refresh()
         
 //        let temp = ingredientSet[fromIndexPath.row] as!Ingr
 //        ingredientSet.moveObjectsAtIndexes(NSIndexSet(index: fromIndexPath.row), toIndex: toIndexPath.row)
@@ -259,9 +283,6 @@ class RecipeDetailTVC: UITableViewController {
 //        let newIngredientSet = ingredientSet as NSOrderedSet
 //        recipe?.ingr = newIngredientSet
         
-        dataSource?.save()
-        dataSource?.reloadRecipeOfInterest()
-        refresh()
         
 //        println(recipe?.hasChanges)
 //        let temp = recipe?.ingr.array as! [Ingr]

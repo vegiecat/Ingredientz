@@ -45,36 +45,35 @@ class IngredientzCoreDataHelper:NSObject
 //        }
     }
     
-    func reloadRecipeOfInterest(){
-        println("----------------Helper reloadRecipeOfInterest()----------------")
-        println("recipeOfInterest BEFORE reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
-        // hello world
-        //if let recipe = recipeOfInterest{
-            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: true)
-        
-        
-//            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
-//            fetchRequest.predicate = NSPredicate(format: "id = %@", recipe.id)
-//            var error:NSError?
-//            let fetchResult = globalMOC.executeFetchRequest(fetchRequest, error: &error) as? [Recipe]
-//            if error != nil{
-//                println(error)
-//            }
-//
-//            if let result = fetchResult{
-//                recipeOfInterest = result.first
-//                println(result)
-//            }else{
-//                println("There was an Problem with fetchAllRecipesByUser()")
-//            }
-        //}
-        println("recipeOfInterest AFTER reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
-        
-//        let recipes = fetchAllRecipesByUser()
-//        let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
-//        recipeOfInterest = nil
-//        recipeOfInterest = newRecipe
-    }
+//    func reloadRecipeOfInterest(){
+//        println("----------------Helper reloadRecipeOfInterest()----------------")
+//        println("recipeOfInterest BEFORE reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
+//        //if let recipe = recipeOfInterest{
+//            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: true)
+//        
+//        
+////            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
+////            fetchRequest.predicate = NSPredicate(format: "id = %@", recipe.id)
+////            var error:NSError?
+////            let fetchResult = globalMOC.executeFetchRequest(fetchRequest, error: &error) as? [Recipe]
+////            if error != nil{
+////                println(error)
+////            }
+////
+////            if let result = fetchResult{
+////                recipeOfInterest = result.first
+////                println(result)
+////            }else{
+////                println("There was an Problem with fetchAllRecipesByUser()")
+////            }
+//        //}
+//        println("recipeOfInterest AFTER reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
+//        
+////        let recipes = fetchAllRecipesByUser()
+////        let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
+////        recipeOfInterest = nil
+////        recipeOfInterest = newRecipe
+//    }
     
     func updateRecipe(recipeToBeUpdated:Recipe){
         globalMOC.refreshObject(recipeToBeUpdated, mergeChanges: true)
@@ -92,7 +91,7 @@ class IngredientzCoreDataHelper:NSObject
         recipe.willAccessValueForKey(nil)
         globalMOC.deleteObject(recipe)
         save()
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
     }
 
     func newIngr()->Ingr{
@@ -111,7 +110,7 @@ class IngredientzCoreDataHelper:NSObject
         println("*********************************************************************")
         println("deleteIngr excuted")
         save()
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
 
     }
 
@@ -121,7 +120,7 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func recipeOfInterest(sender:AnyObject?)->Recipe?{
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
         return recipeOfInterest
     }
     
@@ -137,7 +136,7 @@ class IngredientzCoreDataHelper:NSObject
         var error: NSError? = nil
         globalMOC.save(&error)
         println("error from save2:\(error)")
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
     }
     
     func save(){
