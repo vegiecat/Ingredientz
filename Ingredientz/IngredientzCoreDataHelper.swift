@@ -47,10 +47,12 @@ class IngredientzCoreDataHelper:NSObject
     
     func reloadRecipeOfInterest(){
         println("----------------Helper reloadRecipeOfInterest()----------------")
-        println("recipeOfInterest BEFORE reload:\(recipeOfInterest)")
+        println("recipeOfInterest BEFORE reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
+        
         //if let recipe = recipeOfInterest{
-            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: false)
-            
+            globalMOC.refreshObject(recipeOfInterest!, mergeChanges: true)
+        
+        
 //            let fetchRequest = NSFetchRequest(entityName: EntityNames.Recipe)
 //            fetchRequest.predicate = NSPredicate(format: "id = %@", recipe.id)
 //            var error:NSError?
@@ -66,12 +68,17 @@ class IngredientzCoreDataHelper:NSObject
 //                println("There was an Problem with fetchAllRecipesByUser()")
 //            }
         //}
-        println("recipeOfInterest AFTER reload:\(recipeOfInterest)")
+        println("recipeOfInterest AFTER reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
         
 //        let recipes = fetchAllRecipesByUser()
 //        let newRecipe = recipes.filter{$0.id == self.recipeOfInterest?.id}.first
 //        recipeOfInterest = nil
 //        recipeOfInterest = newRecipe
+    }
+    
+    func updateRecipe(recipeToBeUpdated:Recipe){
+        globalMOC.refreshObject(recipeToBeUpdated, mergeChanges: true)
+        save()
     }
     
     //MARK: Managing Recipes
@@ -82,6 +89,7 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func deleteRecipe(recipe:Recipe){
+        recipe.willAccessValueForKey(nil)
         globalMOC.deleteObject(recipe)
         save()
         reloadRecipeOfInterest()
@@ -98,7 +106,7 @@ class IngredientzCoreDataHelper:NSObject
     }
 
     func deleteIngr(ingredient:Ingr){
-        var ingrArray = ingredient.recipe.ingr.array as! [Ingr]
+        //var ingrArray = ingredient.recipe.ingr.array as! [Ingr]
         globalMOC.deleteObject(ingredient)
         println("*********************************************************************")
         println("deleteIngr excuted")

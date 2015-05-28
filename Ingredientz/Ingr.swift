@@ -25,4 +25,9 @@ class Ingr: NSManagedObject {
         qty = ""
     }
 
+    override var description : String{
+        var returnString = "Name:\(name) Order: \(order)"
+        return returnString
+    }
+
 }

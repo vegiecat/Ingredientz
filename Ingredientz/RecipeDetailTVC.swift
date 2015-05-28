@@ -225,7 +225,7 @@ class RecipeDetailTVC: UITableViewController {
             if var ingredientArray = recipe?.ingr.array as? [Ingr]{
                 let ingredientToBeRemoved = ingredientArray.removeAtIndex(indexPath.row)
                 recipe?.ingr = NSOrderedSet(array: ingredientArray)
-                
+                //dataSource?.updateRecipe(recipe!)
                 dataSource?.deleteIngr(ingredientToBeRemoved)
                 refresh()
             }
