@@ -48,7 +48,7 @@ class IngredientzCoreDataHelper:NSObject
     func reloadRecipeOfInterest(){
         println("----------------Helper reloadRecipeOfInterest()----------------")
         println("recipeOfInterest BEFORE reload:\(recipeOfInterest) FAULT:\(recipeOfInterest?.fault)")
-        
+        // hello world
         //if let recipe = recipeOfInterest{
             globalMOC.refreshObject(recipeOfInterest!, mergeChanges: true)
         
