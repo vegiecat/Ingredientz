@@ -343,14 +343,14 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Chocolate Milk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4a8-4o-D7J">
-                                <rect key="frame" x="62" y="165" width="197" height="58"/>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="28"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chocolate Milk" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4a8-4o-D7J">
+                                <rect key="frame" x="54" y="190" width="212.5" height="48"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="40"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8C-yy-VQQ">
-                                <rect key="frame" x="16" y="205" width="61" height="69"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I8C-yy-VQQ">
+                                <rect key="frame" x="16" y="190" width="30" height="99"/>
                                 <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="60"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -359,14 +359,14 @@
                                     <action selector="previousButtonTapped:" destination="zLM-Dl-jjN" eventType="touchUpInside" id="TC8-5F-Lru"/>
                                 </connections>
                             </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="120 ml" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMq-L0-3IF">
-                                <rect key="frame" x="62" y="230" width="197" height="58"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="120 ml" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dMq-L0-3IF">
+                                <rect key="frame" x="54" y="245" width="212.5" height="36"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-q9-6jd">
-                                <rect key="frame" x="249" y="190" width="61" height="99"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="right" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mh5-q9-6jd">
+                                <rect key="frame" x="274.5" y="190" width="29.5" height="99"/>
                                 <fontDescription key="fontDescription" name="DiwanMishafi" family="Mishafi" pointSize="60"/>
                                 <state key="normal" title="&gt;">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -381,8 +381,13 @@
                             <constraint firstItem="mh5-q9-6jd" firstAttribute="leading" secondItem="dMq-L0-3IF" secondAttribute="trailing" constant="8" symbolic="YES" id="2Lr-Mh-k1z"/>
                             <constraint firstAttribute="centerY" secondItem="I8C-yy-VQQ" secondAttribute="centerY" constant="0.5" id="2Sr-n6-HkF"/>
                             <constraint firstItem="I8C-yy-VQQ" firstAttribute="leading" secondItem="JPl-IH-JCr" secondAttribute="leadingMargin" id="BRm-aX-iOM"/>
+                            <constraint firstItem="mh5-q9-6jd" firstAttribute="leading" secondItem="4a8-4o-D7J" secondAttribute="trailing" constant="8" symbolic="YES" id="HRb-2y-hwc"/>
                             <constraint firstAttribute="trailingMargin" secondItem="mh5-q9-6jd" secondAttribute="trailing" id="IfI-Ii-ZD0"/>
+                            <constraint firstItem="mh5-q9-6jd" firstAttribute="top" secondItem="4a8-4o-D7J" secondAttribute="top" id="Wlu-gP-Ejj"/>
+                            <constraint firstAttribute="centerX" secondItem="4a8-4o-D7J" secondAttribute="centerX" id="YEk-Wt-bpn"/>
                             <constraint firstItem="dMq-L0-3IF" firstAttribute="leading" secondItem="I8C-yy-VQQ" secondAttribute="trailing" constant="8" symbolic="YES" id="cum-TU-HWV"/>
+                            <constraint firstItem="4a8-4o-D7J" firstAttribute="leading" secondItem="I8C-yy-VQQ" secondAttribute="trailing" constant="8" symbolic="YES" id="d28-hf-O2z"/>
+                            <constraint firstItem="dMq-L0-3IF" firstAttribute="top" secondItem="4a8-4o-D7J" secondAttribute="bottom" constant="7" id="gbh-wq-x7w"/>
                             <constraint firstAttribute="centerY" secondItem="mh5-q9-6jd" secondAttribute="centerY" id="jbg-Qo-ZKC"/>
                         </constraints>
                     </view>
