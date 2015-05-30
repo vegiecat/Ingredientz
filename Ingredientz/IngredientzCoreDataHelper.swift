@@ -140,6 +140,8 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func save(){
+        println("*********************************************************************")
+        println("save excuted")
         var error: NSError? = nil
         if globalMOC.hasChanges && !globalMOC.save(&error) {
             // Replace this implementation with code to handle the error appropriately.
