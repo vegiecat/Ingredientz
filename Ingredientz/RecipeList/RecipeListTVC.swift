@@ -132,6 +132,11 @@ class RecipeListTVC: UITableViewController {
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
     }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tableView.reloadData()
+    }
 
     //refetch all the Recipe by user again
     func refresh(){

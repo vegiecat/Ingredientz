@@ -196,12 +196,19 @@ class RecipeDetailTVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let item = recipeContents[indexPath.section].recipeItems[indexPath.row]
-        switch item{
-        case .name(let name):
-            println("decide if we should let them edit name here")
-        case .ingredient(let ingredient):
-            ingredientEditAlert(ingredient)
+        
+        //if it's section 0, its the recipe name, else it's the ingredient section
+        
+        if indexPath.section == 0 {
+            recipeEditAlert(self.recipe)
+        } else {
+            let item = recipeContents[indexPath.section].recipeItems[indexPath.row]
+            switch item{
+            case .name(let name):
+                println("decide if we should let them edit name here")
+            case .ingredient(let ingredient):
+                ingredientEditAlert(ingredient)
+            }
         }
     }
     
@@ -304,6 +311,33 @@ class RecipeDetailTVC: UITableViewController {
             }
         }
     }
+
+    
+    // MARK: edit recipe via alert
+    func recipeEditAlert(recipe:Recipe?){
+        if let ds = dataSource{
+            var window = UIAlertController(title: "Recipe Name", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
+                let txtFieldName = window.textFields![0] as! UITextField
+                var recipeEdited:Recipe?
+                if let recipeTemp = recipe{
+                    recipeEdited = recipeTemp
+                    recipeEdited?.name = txtFieldName.text
+                    ds.save()
+                    self.refresh()
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
+            window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
+                textField.text = recipe?.name ?? ""
+                textField.placeholder = "Recipe"
+            }
+            window.addAction(saveAction)
+            window.addAction(cancelAction)
+            presentViewController(window, animated: true, completion: nil)
+        }
+    }
 }
 
 extension Array{
@@ -312,3 +346,6 @@ extension Array{
         self.insert(temp, atIndex: toIndex)
     }
 }
+
+
+
