@@ -243,6 +243,7 @@ class RecipeDetailTVC: UITableViewController {
             ingredientSet[i-1].order = i
         }
 
+      
 
         
 //        let temp = ingredientSet[fromIndexPath.row] as!Ingr
@@ -279,6 +280,14 @@ class RecipeDetailTVC: UITableViewController {
     }
     */
 
+    // MARK: - Section Text
+    override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
+        if  section == 0 {
+            return ""
+        }
+        return "Tap + button to add ingredients."
+    }
+
 
     
     // MARK: - Navgiation
@@ -286,8 +295,6 @@ class RecipeDetailTVC: UITableViewController {
         if let identifier = segue.identifier{
             if identifier == SegueID.kitchenModeSegueID {
                 if let kmvc = segue.destinationViewController as? KitchenModeVC{
-                    
-                    // TODO: needs this to be wired up
                     
                     //kitchen mode vc needs an array of ingr names and array of qty
                     let ingrArray = recipe?.ingr.array as! [Ingr]
