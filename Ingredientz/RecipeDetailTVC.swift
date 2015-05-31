@@ -311,6 +311,23 @@ class RecipeDetailTVC: UITableViewController {
             }
         }
     }
+    
+    override func shouldPerformSegueWithIdentifier(identifier: String?, sender: AnyObject?) -> Bool {
+        
+        if identifier == SegueID.kitchenModeSegueID {
+            let ingrArray = recipe?.ingr.array as! [Ingr]
+            if ingrArray.count == 0 {
+                println("no recipes")
+                
+                var alert = UIAlertController(title: "No Ingredients", message: "To use Kitchen Mode please please enter at least one ingredient.", preferredStyle: UIAlertControllerStyle.Alert)
+                alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.Default, handler: nil))
+                self.presentViewController(alert, animated: true, completion: nil)
+                return false
+            
+            }
+        }
+        return true
+    }
 
     
     // MARK: edit recipe via alert
