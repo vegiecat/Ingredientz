@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Ingredients</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>Butter</string>
+			<key>Qty</key>
+			<string>5 grams</string>
+		</dict>
+	</array>
+	<key>Recipe Name</key>
+	<string>Cookies</string>
+</dict>
+</plist>

@@ -123,6 +123,8 @@ class RecipeListTVC: UITableViewController {
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         println("----------------RecipeListTVC is From:\(imFrom)----------------")
         //refetch all Recipe
         if let ds = dataSource{
@@ -137,6 +139,8 @@ class RecipeListTVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
+        addDefaultRecipes()
+
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -235,11 +239,58 @@ class RecipeListTVC: UITableViewController {
     }
     
     
-    // MARK: 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    // MARK: create default recipes
+    func addDefaultRecipes() {
+        loadRecipeToDatabaseFromFile("Cookie")
     }
 
-
+    
+    // TODO: need to add ingredients to the recipe
+    func loadRecipeToDatabaseFromFile(fileName : String) {
+        if let ds = dataSource{
+            
+            if let path = NSBundle.mainBundle().pathForResource(fileName, ofType: "plist") {
+                if let aRecipe = NSDictionary(contentsOfFile: path) as? Dictionary<String,AnyObject> {
+                    
+                    //create new recipe
+                    //create the new recipe and update our model
+                    let newRecipe = ds.newRecipe()
+                    
+                    //set name
+                    if let recipeName = aRecipe["Recipe Name"] as? String {
+                        println(recipeName)
+                        newRecipe.name = recipeName
+                    }
+                    
+                    //set ingredients
+                    
+                    if let recipeIngr = aRecipe["Ingredients"] as? Array<Dictionary<String,String>> {
+                        
+                        //create new ingredient
+                        var newIngr:Ingr?
+                        
+                        //set item and name
+                        for ingrItem in recipeIngr {
+                            
+                            if let ingrName = ingrItem["Name"] {
+                                println(ingrName)
+                                newIngr?.name = ingrName
+                            }
+                            
+                            if let ingrQty = ingrItem["Qty"] {
+                                println(ingrQty)
+                                newIngr?.name = ingrQty
+                            }
+                        }
+                        
+                        //assign the ingr. to the new recipe
+                        newIngr?.recipe = newRecipe
+                    }
+                    
+                    //save
+                    ds.save()
+                }
+            }
+        }
+    }
 }
