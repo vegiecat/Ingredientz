@@ -54,24 +54,12 @@
 		</dict>
 		<dict>
 			<key>Name</key>
-			<string>dry ground lemon or orange peel (optional)</string>
+			<string>chocolate chips</string>
 			<key>Qty</key>
-			<string>1 teaspoon</string>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>semi-sweet chocolate morsels / chips</string>
-			<key>Qty</key>
-			<string>2 cups (480ml) (12-ounce package)</string>
-		</dict>
-		<dict>
-			<key>Name</key>
-			<string>chopped nuts, such as groundnuts (optional)</string>
-			<key>Qty</key>
-			<string>5 oz. (150g)</string>
+			<string>2 cups (480ml) </string>
 		</dict>
 	</array>
 	<key>Recipe Name</key>
-	<string>Cookies</string>
+	<string>Chocolate Chip Cookies</string>
 </dict>
 </plist>

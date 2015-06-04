@@ -131,6 +131,11 @@ class RecipeListTVC: UITableViewController {
             refresh()
         }else{
             dataSource = IngredientzCoreDataHelper()
+            
+            if isUserFirstTime() {
+                addDefaultRecipes()
+            }
+            
             refresh()
         }
         // Uncomment the following line to preserve selection between presentations
@@ -139,8 +144,7 @@ class RecipeListTVC: UITableViewController {
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        addDefaultRecipes()
-
+       
     }
     
     override func viewWillAppear(animated: Bool) {
@@ -240,12 +244,32 @@ class RecipeListTVC: UITableViewController {
     
     
     // MARK: create default recipes
-    func addDefaultRecipes() {
-        loadRecipeToDatabaseFromFile("Cookie")
+    
+    func isUserFirstTime() -> Bool {
+        
+        let defaults = NSUserDefaults.standardUserDefaults()
+        
+        if let userFirstTimeFlag = defaults.stringForKey("User First Time")
+        {
+            //if the key exists, it means user has loaded the app before
+            println("user has laoded app before")
+            return false
+        } else {
+            //if it doesn't exist, it's user first time
+            //and mark the user as loaded the app
+            //add the default recipes
+            println("user's first time!")
+            defaults.setObject(true, forKey: "User First Time")
+            return true
+        }
     }
 
+    func addDefaultRecipes() {
+        loadRecipeToDatabaseFromFile("Cookie")
+        loadRecipeToDatabaseFromFile("1234Cake")
+    }
     
-    // TODO: need to add ingredients to the recipe
+    
     func loadRecipeToDatabaseFromFile(fileName : String) {
         if let ds = dataSource{
             
@@ -258,7 +282,7 @@ class RecipeListTVC: UITableViewController {
                     
                     //set name
                     if let recipeName = aRecipe["Recipe Name"] as? String {
-                        println(recipeName)
+                        //println(recipeName)
                         newRecipe.name = recipeName
                     }
                     
@@ -266,25 +290,30 @@ class RecipeListTVC: UITableViewController {
                     
                     if let recipeIngr = aRecipe["Ingredients"] as? Array<Dictionary<String,String>> {
                         
-                        //create new ingredient
-                        var newIngr = ds.newIngr()
                         
                         //set item and name
                         for ingrItem in recipeIngr {
                             
+                            //create new ingredient
+                            var newIngr = ds.newIngr()
+
+                            
                             if let ingrName = ingrItem["Name"] {
-                                println(ingrName)
+                                //println(ingrName)
                                 newIngr.name = ingrName
                             }
                             
                             if let ingrQty = ingrItem["Qty"] {
-                                println(ingrQty)
-                                newIngr.name = ingrQty
+                                //println(ingrQty)
+                                newIngr.qty = ingrQty
                             }
+                            
+                            //assign the ingr. to the new recipe
+                            newIngr.recipe = newRecipe
                         }
                         
-                        //assign the ingr. to the new recipe
-                        newIngr.recipe = newRecipe
+                        //println(newRecipe)
+
                     }
                     
                     //save
