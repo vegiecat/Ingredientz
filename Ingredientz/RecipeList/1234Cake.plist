@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Recipe Name</key>
+	<string>1-2-3-4 Cake</string>
+	<key>Ingredients</key>
+	<array>
+		<dict>
+			<key>Name</key>
+			<string>Butter</string>
+			<key>Qty</key>
+			<string>1 cup (240 mL)</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>milk</string>
+			<key>Qty</key>
+			<string>1 cup</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>sugar</string>
+			<key>Qty</key>
+			<string>2 cups</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>flour</string>
+			<key>Qty</key>
+			<string>3 cups</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>baking powder</string>
+			<key>Qty</key>
+			<string>3 teaspoons</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>salt</string>
+			<key>Qty</key>
+			<string>3 pinches</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>eggs</string>
+			<key>Qty</key>
+			<string>4</string>
+		</dict>
+	</array>
+</dict>
+</plist>

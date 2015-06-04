@@ -20,6 +20,7 @@
 		688C39401B09A83A0038F9B0 /* GlobalVar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C393F1B09A83A0038F9B0 /* GlobalVar.swift */; };
 		688C39441B0AD97C0038F9B0 /* RecipeDetailTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */; };
 		D0BAA9641B200B1400B69B38 /* Cookie.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BAA9631B200B1400B69B38 /* Cookie.plist */; };
+		D0BAA9661B201BBB00B69B38 /* 1234Cake.plist in Resources */ = {isa = PBXBuildFile; fileRef = D0BAA9651B201BBB00B69B38 /* 1234Cake.plist */; };
 		D0DC840B1B1030A600128992 /* KitchenModeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0DC840A1B1030A600128992 /* KitchenModeVC.swift */; };
 		D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */ = {isa = PBXBuildFile; fileRef = D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */; };
 		D0E22E641B044F45007D8E02 /* RecipeListTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */; };
@@ -53,6 +54,7 @@
 		688C393F1B09A83A0038F9B0 /* GlobalVar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlobalVar.swift; sourceTree = "<group>"; };
 		688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecipeDetailTVC.swift; sourceTree = "<group>"; };
 		D0BAA9631B200B1400B69B38 /* Cookie.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = Cookie.plist; path = RecipeList/Cookie.plist; sourceTree = "<group>"; };
+		D0BAA9651B201BBB00B69B38 /* 1234Cake.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = 1234Cake.plist; path = RecipeList/1234Cake.plist; sourceTree = "<group>"; };
 		D0DC840A1B1030A600128992 /* KitchenModeVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = KitchenModeVC.swift; path = "Kitchen Mode/KitchenModeVC.swift"; sourceTree = "<group>"; };
 		D0E22E5F1B044B9B007D8E02 /* scratchpad.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = scratchpad.txt; sourceTree = "<group>"; };
 		D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RecipeListTVC.swift; path = RecipeList/RecipeListTVC.swift; sourceTree = "<group>"; };
@@ -109,6 +111,7 @@
 			children = (
 				D0E22E631B044F45007D8E02 /* RecipeListTVC.swift */,
 				D0BAA9631B200B1400B69B38 /* Cookie.plist */,
+				D0BAA9651B201BBB00B69B38 /* 1234Cake.plist */,
 				688C39431B0AD97C0038F9B0 /* RecipeDetailTVC.swift */,
 				6866D8D61B0629F800951342 /* IngredientzCoreDataHelper.swift */,
 				D0DC840A1B1030A600128992 /* KitchenModeVC.swift */,
@@ -232,6 +235,7 @@
 			files = (
 				D0BAA9641B200B1400B69B38 /* Cookie.plist in Resources */,
 				686FF03B1B0446F200C19B95 /* Main.storyboard in Resources */,
+				D0BAA9661B201BBB00B69B38 /* 1234Cake.plist in Resources */,
 				D0E22E601B044B9B007D8E02 /* scratchpad.txt in Resources */,
 				686FF0401B0446F200C19B95 /* LaunchScreen.xib in Resources */,
 				686FF03D1B0446F200C19B95 /* Images.xcassets in Resources */,

@@ -8,7 +8,67 @@
 			<key>Name</key>
 			<string>Butter</string>
 			<key>Qty</key>
-			<string>5 grams</string>
+			<string>2 sticks (½ lb / 225 grams / 1 cup)</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>granulated white sugar</string>
+			<key>Qty</key>
+			<string>¾ cup (180ml) </string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>packed brown sugar</string>
+			<key>Qty</key>
+			<string>¾ cup (180ml)</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>vanilla extract</string>
+			<key>Qty</key>
+			<string>¼ teaspoon</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>Large Eggs</string>
+			<key>Qty</key>
+			<string>2</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>all-purpose flour</string>
+			<key>Qty</key>
+			<string>2 ¼ cups (600ml) (290g)</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string> baking soda</string>
+			<key>Qty</key>
+			<string>1 teaspoon</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>salt</string>
+			<key>Qty</key>
+			<string>1 teaspoon</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>dry ground lemon or orange peel (optional)</string>
+			<key>Qty</key>
+			<string>1 teaspoon</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>semi-sweet chocolate morsels / chips</string>
+			<key>Qty</key>
+			<string>2 cups (480ml) (12-ounce package)</string>
+		</dict>
+		<dict>
+			<key>Name</key>
+			<string>chopped nuts, such as groundnuts (optional)</string>
+			<key>Qty</key>
+			<string>5 oz. (150g)</string>
 		</dict>
 	</array>
 	<key>Recipe Name</key>
