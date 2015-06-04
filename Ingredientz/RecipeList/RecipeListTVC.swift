@@ -77,7 +77,9 @@ class RecipeListTVC: UITableViewController {
             let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
                 let txtFieldName = window.textFields![0] as! UITextField
                 var recipeEdited:Recipe?
+                //the first part of if will not be triggered, due to change of UI flow.
                 if let recipeTemp = recipe{
+                    //use the same name "recipeEdited"
                     recipeEdited = recipeTemp
                     recipeEdited?.name = txtFieldName.text
                     ds.save()
@@ -99,6 +101,10 @@ class RecipeListTVC: UITableViewController {
 
                         //save
                         ds.save()
+                        
+                        //Push to Recipe Detail TVC
+                        self.dataSource?.didSelectRecipe(recipeNew, sender: self)
+                        self.performSegueWithIdentifier(SegueID.showRecipeDetail, sender: self)
                     }
                 }
             }
