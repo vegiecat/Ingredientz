@@ -16,7 +16,7 @@ class Ingr: NSManagedObject {
     @NSManaged var name: String
     @NSManaged var qty: String
     @NSManaged var recipe: Recipe
-    @NSManaged var order: Int
+    @NSManaged var order: Int32
 
     override func awakeFromInsert() {
         super.awakeFromInsert()

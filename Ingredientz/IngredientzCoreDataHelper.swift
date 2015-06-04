@@ -92,7 +92,7 @@ class IngredientzCoreDataHelper:NSObject
         recipe.willAccessValueForKey(nil)
         globalMOC.deleteObject(recipe)
         save()
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
     }
 
     func newIngr()->Ingr{
@@ -100,7 +100,7 @@ class IngredientzCoreDataHelper:NSObject
         let ingredient = NSManagedObject(entity: entity!, insertIntoManagedObjectContext: globalMOC) as! Ingr
         if let recipe = recipeOfInterest{
             ingredient.recipe = recipe
-            ingredient.order = recipe.ingr.count
+            ingredient.order = Int32(recipe.ingr.count)
         }
         return ingredient
     }
@@ -111,7 +111,7 @@ class IngredientzCoreDataHelper:NSObject
         println("*********************************************************************")
         println("deleteIngr excuted")
         save()
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
 
     }
 
@@ -121,7 +121,7 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func recipeOfInterest(sender:AnyObject?)->Recipe?{
-        reloadRecipeOfInterest()
+        //reloadRecipeOfInterest()
         return recipeOfInterest
     }
     

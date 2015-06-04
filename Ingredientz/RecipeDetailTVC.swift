@@ -247,7 +247,7 @@ class RecipeDetailTVC: UITableViewController {
         var ingredientSet = recipe?.ingr.array as! [Ingr]
         ingredientSet.moveObjectsAtIndexes(fromIndexPath.row, toIndex: toIndexPath.row)
         for i in 1...ingredientSet.count{
-            ingredientSet[i-1].order = i
+            ingredientSet[i-1].order = Int32(i)
         }
 
       

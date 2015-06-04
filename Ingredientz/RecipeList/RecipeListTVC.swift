@@ -166,8 +166,6 @@ class RecipeListTVC: UITableViewController {
             ds.save()
             refresh()
         }
-        
-
     }
     
     // MARK: - Table view data source
@@ -195,6 +193,8 @@ class RecipeListTVC: UITableViewController {
     override func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == .Delete {
             // Delete the row from the data source
+            dataSource?.deleteRecipe(recipes[indexPath.row])
+            recipes.removeAtIndex(indexPath.row)
             tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: .Fade)
         } else if editingStyle == .Insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
@@ -267,24 +267,24 @@ class RecipeListTVC: UITableViewController {
                     if let recipeIngr = aRecipe["Ingredients"] as? Array<Dictionary<String,String>> {
                         
                         //create new ingredient
-                        var newIngr:Ingr?
+                        var newIngr = ds.newIngr()
                         
                         //set item and name
                         for ingrItem in recipeIngr {
                             
                             if let ingrName = ingrItem["Name"] {
                                 println(ingrName)
-                                newIngr?.name = ingrName
+                                newIngr.name = ingrName
                             }
                             
                             if let ingrQty = ingrItem["Qty"] {
                                 println(ingrQty)
-                                newIngr?.name = ingrQty
+                                newIngr.name = ingrQty
                             }
                         }
                         
                         //assign the ingr. to the new recipe
-                        newIngr?.recipe = newRecipe
+                        newIngr.recipe = newRecipe
                     }
                     
                     //save
