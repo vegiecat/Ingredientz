@@ -139,7 +139,28 @@ class RecipeDetailTVC: UITableViewController {
         }
     }
     
-    
+    func ingredientAddAlert(){
+        if let ds = dataSource{
+            var window = UIAlertController(title: "Add Ingredient", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
+                let txtFieldName = window.textFields![0] as! UITextField
+                let txtFieldQty = window.textFields![1] as! UITextField
+                let ingredientToBeAdded = ds.newIngr()
+                ingredientToBeAdded.name = txtFieldName.text
+                ingredientToBeAdded.qty = txtFieldQty.text
+                ds.save()
+                self.refresh()
+            }
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
+            window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
+            }
+            window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
+            }
+            window.addAction(saveAction)
+            window.addAction(cancelAction)
+            presentViewController(window, animated: true, completion: nil)
+        }
+    }
     
     // MARK: - VC LIFE CYCLE
     override func viewDidLoad() {
@@ -232,7 +253,8 @@ class RecipeDetailTVC: UITableViewController {
             if var ingredientArray = recipe?.ingr.array as? [Ingr]{
                 let ingredientToBeRemoved = ingredientArray.removeAtIndex(indexPath.row)
                 recipe?.ingr = NSOrderedSet(array: ingredientArray)
-                //dataSource?.updateRecipe(recipe!)
+                dataSource?.save()
+                dataSource?.updateRecipe(recipe!)
                 dataSource?.deleteIngr(ingredientToBeRemoved)
                 refresh()
             }
@@ -288,11 +310,16 @@ class RecipeDetailTVC: UITableViewController {
     */
 
     // MARK: - Section Text
+    override func viewDidLayoutSubviews() {
+        tableView.footerViewForSection(1)?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "ingredientAddAlert"))
+    }
+
+    
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
         if  section == 0 {
             return ""
         }
-        return "Tap + button to add ingredients."
+        return "Tap to add ingredients."
     }
 
 

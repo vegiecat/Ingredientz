@@ -70,7 +70,47 @@ class RecipeListTVC: UITableViewController {
         self.tableView.setEditing(isInEditMode, animated: true)
     }
     
+//    override func tableView(tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+//        var label = UILabel()
+//        label.tag = section
+//        label.userInteractionEnabled = true
+//        label.text = "+ Tap to add recipe."
+//        
+//        //label.frame = CGRectMake(0, 0, tableView.tableFooterView?.frame.size.width!, tableView.tableFooterView?.frame.size.height!)
+//        label.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "recipeAddAlert"))
+//        
+//        return label
+//    }
     
+    
+    func recipeAddAlert(){
+        if let ds = dataSource{
+            var window = UIAlertController(title: "Recipe Name", message: "", preferredStyle: UIAlertControllerStyle.Alert)
+            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
+                let txtFieldName = window.textFields![0] as! UITextField
+                
+                var recipeNew = ds.newRecipe()
+                recipeNew.name = txtFieldName.text
+
+                //save
+                ds.save()
+                self.refresh()
+                //Push to Recipe Detail TVC
+                self.dataSource?.didSelectRecipe(recipeNew, sender: self)
+                self.performSegueWithIdentifier(SegueID.showRecipeDetail, sender: self)
+
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
+            window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
+            }
+            window.addAction(saveAction)
+            window.addAction(cancelAction)
+            presentViewController(window, animated: true, completion: nil)
+        }
+    }
+    
+    //not being used, replaced with recipeAddAlert()
     func recipeEditAlert(recipe:Recipe?){
         if let ds = dataSource{
             var window = UIAlertController(title: "Recipe Name", message: "", preferredStyle: UIAlertControllerStyle.Alert)
@@ -172,6 +212,8 @@ class RecipeListTVC: UITableViewController {
         }
     }
     
+    
+    
     // MARK: - Table view data source
     override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
@@ -214,9 +256,15 @@ class RecipeListTVC: UITableViewController {
         return true
     }
 
+    
+    
     // MARK: - Section Text
+    override func viewDidLayoutSubviews() {
+        tableView.footerViewForSection(0)?.addGestureRecognizer(UITapGestureRecognizer(target: self, action: "recipeAddAlert"))
+    }
+
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Tap + button to add recipe."
+        return "Tap to add recipe."
     }
     
     

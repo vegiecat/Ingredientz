@@ -5,7 +5,7 @@
         <attribute name="name" optional="YES" attributeType="String" syncable="YES"/>
         <attribute name="order" optional="YES" attributeType="Integer 32" defaultValueString="0" syncable="YES"/>
         <attribute name="qty" optional="YES" attributeType="String" syncable="YES"/>
-        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Recipe" inverseName="ingr" inverseEntity="Recipe" syncable="YES"/>
+        <relationship name="recipe" optional="YES" maxCount="1" deletionRule="Deny" destinationEntity="Recipe" inverseName="ingr" inverseEntity="Recipe" syncable="YES"/>
     </entity>
     <entity name="Recipe" representedClassName="Recipe" syncable="YES">
         <attribute name="id" optional="YES" attributeType="String" syncable="YES"/>
@@ -15,7 +15,7 @@
     </entity>
     <fetchRequest name="FetchRecipeOfInterest" entity="Recipe" predicateString="id == &quot;id&quot;"/>
     <elements>
-        <element name="Ingr" positionX="-54" positionY="9" width="128" height="120"/>
-        <element name="Recipe" positionX="-63" positionY="-18" width="128" height="105"/>
+        <element name="Ingr" positionX="-54" positionY="9" width="128" height="118"/>
+        <element name="Recipe" positionX="-299" positionY="9" width="128" height="105"/>
     </elements>
 </model>

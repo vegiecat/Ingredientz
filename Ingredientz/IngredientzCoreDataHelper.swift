@@ -77,7 +77,7 @@ class IngredientzCoreDataHelper:NSObject
     }
     
     func updateRecipe(recipeToBeUpdated:Recipe){
-        globalMOC.refreshObject(recipeToBeUpdated, mergeChanges: true)
+        //globalMOC.refreshObject(recipeToBeUpdated, mergeChanges: true)
         save()
     }
     
@@ -111,6 +111,8 @@ class IngredientzCoreDataHelper:NSObject
         println("*********************************************************************")
         println("deleteIngr excuted")
         save()
+        //globalMOC.refreshObject(ingredient, mergeChanges: true)
+
         //reloadRecipeOfInterest()
 
     }
@@ -129,6 +131,7 @@ class IngredientzCoreDataHelper:NSObject
     class func managedObjectContext()->NSManagedObjectContext{
         let appDelegate = UIApplication.sharedApplication().delegate as! AppDelegate
         let managedObjectContext = appDelegate.managedObjectContext!
+        managedObjectContext.stalenessInterval = NSTimeInterval(0.0)
         return managedObjectContext
     }
 
@@ -145,7 +148,7 @@ class IngredientzCoreDataHelper:NSObject
         if globalMOC.hasChanges && !globalMOC.save(&error) {
             // Replace this implementation with code to handle the error appropriately.
             // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-            NSLog("Unresolved error \(error), \(error!.userInfo)")
+            NSLog("Unresolved error: \(NSPersistentStoreIncompleteSaveError) \(error), \(error!.userInfo)")
             abort()
         }
     }
