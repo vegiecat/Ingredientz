@@ -76,7 +76,7 @@ class RecipeDetailTVC: UITableViewController {
     var isInEditMode = false
     
     @IBAction func addIngredient(sender: UIBarButtonItem) {
-        ingredientEditAlert(nil)
+        ingredientEditAlert(nil, indexpath: nil)
 //        if let ds = dataSource{
 //            var window = UIAlertController(title: "New Recipe", message: "", preferredStyle: UIAlertControllerStyle.Alert)
 //            let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
@@ -107,7 +107,7 @@ class RecipeDetailTVC: UITableViewController {
     
     
     //code needs to be modulaized in a later phase.
-    func ingredientEditAlert(ingredient:Ingr?){
+    func ingredientEditAlert(ingredient:Ingr?, indexpath:NSIndexPath?){
         if let ds = dataSource{
             var window = UIAlertController(title: "Edit Ingredient", message: "", preferredStyle: UIAlertControllerStyle.Alert)
             let saveAction = UIAlertAction(title: "Save", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
@@ -124,7 +124,12 @@ class RecipeDetailTVC: UITableViewController {
                 ds.save()
                 self.refresh()
             }
-            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
+            let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in
+                if let path = indexpath{
+                    self.tableView.deselectRowAtIndexPath(path, animated: true)
+                }
+
+            }
             window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
                 textField.text = ingredient?.name ?? ""
                 textField.placeholder = "Ingredient"
@@ -218,18 +223,12 @@ class RecipeDetailTVC: UITableViewController {
 
     override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         
-        //if it's section 0, its the recipe name, else it's the ingredient section
-        
-        if indexPath.section == 0 {
-            recipeEditAlert(self.recipe)
-        } else {
-            let item = recipeContents[indexPath.section].recipeItems[indexPath.row]
-            switch item{
-            case .name(let name):
-                println("decide if we should let them edit name here")
-            case .ingredient(let ingredient):
-                ingredientEditAlert(ingredient)
-            }
+        let item = recipeContents[indexPath.section].recipeItems[indexPath.row]
+        switch item{
+        case .name(let name):
+            recipeEditAlert(recipe)
+        case .ingredient(let ingredient):
+            ingredientEditAlert(ingredient, indexpath: indexPath)
         }
     }
     
@@ -373,6 +372,7 @@ class RecipeDetailTVC: UITableViewController {
             }
             
             let cancelAction = UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Default) { (action:UIAlertAction!) -> Void in}
+            
             window.addTextFieldWithConfigurationHandler { (textField:UITextField!) in
                 textField.text = recipe?.name ?? ""
                 textField.placeholder = "Recipe"
