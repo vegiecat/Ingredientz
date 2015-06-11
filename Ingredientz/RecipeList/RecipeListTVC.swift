@@ -264,7 +264,7 @@ class RecipeListTVC: UITableViewController {
     }
 
     override func tableView(tableView: UITableView, titleForFooterInSection section: Int) -> String? {
-        return "Tap to add recipe."
+        return "Tap here to add recipes."
     }
     
     

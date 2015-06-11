@@ -319,7 +319,7 @@ class RecipeDetailTVC: UITableViewController {
         if  section == 0 {
             return ""
         }
-        return "Tap to add ingredients."
+        return "Tap here to add ingredients."
     }
 
 
